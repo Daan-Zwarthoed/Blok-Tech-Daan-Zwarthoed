@@ -1,0 +1,17 @@
+- var user = {description: 'there is a user description'}
+doctype html
+html(lang='en')
+ head
+   title Hello, World!
+ body
+    include components/header.pug
+    h1 Hello, World
+    
+    div
+     if user.description
+        p= user.description
+     else
+        p there is no description
+
+    include components/footer.pug
+    script(src='index.js')
