@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
+    "start": "node serverStart.js && nodemon server.js",
     "startPug": "pug -w . -o ./html -P"
   },
   "author": "",
@@ -13,6 +13,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "moment": "^2.29.1",
+    "open": "^8.0.6",
     "pug": "^3.0.2",
     "sass": "^1.32.11"
   },
