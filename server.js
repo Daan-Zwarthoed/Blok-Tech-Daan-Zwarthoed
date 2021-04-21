@@ -2,18 +2,19 @@ const express = require('express');
 const app = express();
 const port = 8080;
 
-app.use(express.static('static/public'));
+app.set('views', './static/public')
+app.set('view engine', 'pug')
 
 app.get('/', (req, res) => {
-  res.sendFile('./static/public/html/index.html', { root: __dirname });
+  res.render('index', {route: 'pages/profiel/profiel.pug'});
 })
 
-app.get('/about', (req, res) => {
-  res.sendFile('./static/public/html/about.html', { root: __dirname });
+app.get('/zoeken', (req, res) => {
+  res.render('index', {route: 'pages/zoeken/zoeken.pug'});
 })
 
-app.get('/login', (req, res) => {
-  res.sendFile('./static/public/html/login.html', { root: __dirname });
+app.get('/berichten', (req, res) => {
+  res.render('index', {route: 'pages/berichten/berichten.pug'});
 })
 
 app.get('*', function(req, res){

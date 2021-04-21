@@ -1,17 +1,18 @@
-- var user = {description: 'there is a user description'}
 doctype html
 html(lang='en')
  head
    title Hello, World!
  body
-    include components/header.pug
-    h1 Hello, World
-    
-    div
-     if user.description
-        p= user.description
-     else
-        p there is no description
+    include components/header/header.pug
 
-    include components/footer.pug
+    if route === 'pages/berichten/berichten.pug'
+        include pages/berichten/berichten.pug
+    else if route === 'pages/zoeken/zoeken.pug'
+        include pages/zoeken/zoeken.pug
+    else 
+        include pages/profiel/profiel.pug
+
+    include components/footer/footer.pug
     script(src='index.js')
+    style 
+        include index.scss
