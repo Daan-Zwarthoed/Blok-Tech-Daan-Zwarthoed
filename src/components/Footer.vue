@@ -1,4 +1,20 @@
-.footer {
+<template>
+<div>
+    <ul>
+        <li>
+            <router-link to="/">Profiel</router-link>
+        </li>
+         <li>
+            <router-link to="/zoeken">Zoeken</router-link>
+        </li> <li>
+            <router-link to="/berichten">Berichten</router-link>
+        </li>
+    </ul>
+</div>
+</template>
+
+<style scoped>
+div{
   width: 100vw;
   height: 4em !important;
   position: absolute;
@@ -7,7 +23,7 @@
   right: 0;
 }
 
-.footer ul {
+ul {
   display: flex;
   flex-direction: row;
   height: 100%;
@@ -15,7 +31,7 @@
   justify-content: space-between;
 }
 
-.footer ul li {
+ul li {
   display: flex;
   height: 100%;
   width: 100%;
@@ -24,7 +40,7 @@
   border: solid black 1px;
 }
 
-.footer ul li a {
+ul li a {
   color: black;
   text-decoration: none;
   display: flex;
@@ -33,3 +49,5 @@
   height: 100%;
   width: 100%;
 }
+
+</style>
