@@ -1,7 +1,8 @@
 .header {
     width: 100vw;
-    height: 4em !important;
-    position: absolute;
+    height: 2em !important;
+    position: fixed;
+    z-index: 2;
     top: 0;
     left: 0;
     right: 0;

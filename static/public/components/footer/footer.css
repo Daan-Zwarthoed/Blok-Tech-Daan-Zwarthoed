@@ -1,7 +1,7 @@
 .footer {
   width: 100vw;
-  height: 4em !important;
-  position: absolute;
+  height: 2em !important;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
@@ -19,7 +19,6 @@
   display: flex;
   height: 100%;
   width: 100%;
-  font-size: 2em;
   background-color: #5dfdcb;
   border: solid black 1px;
 }

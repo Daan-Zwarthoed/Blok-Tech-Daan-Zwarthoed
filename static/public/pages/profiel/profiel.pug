@@ -1,8 +1,18 @@
-mixin form(formTitle)
- h4= formTitle
- input
+if !filterStap
+    a(href="/filteren") start met filteren
+else if filterStap === 'KiesSpel'
+    include KiesSpel/KiesSpel.pug
+else
+    h1= filterStap
+    h3 Wat is uw username
+    input(type="text")
+    h3 Wat is uw rank upload een foto om het te bewijzen
 
-h1 Filters instellen
-+form('Welke game speel je?')
-+form('Welke rank ben je?')
-+form('Hoe speel je?')
+if filterStap === 'Rocket League'
+    h1 Rocket League
+else if filterStap === 'Schaken'
+    h1 Schaken
+else if filterStap === 'Apex Legends'
+    h1 ApexLegends
+else if filterStap === 'Modern Warfare'
+    h1 ModernWarfare

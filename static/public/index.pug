@@ -1,18 +1,18 @@
 doctype html
 html(lang='en')
- head
-   title Hello, World!
- body
+  head
+    title= title
+  body
     include components/header/header.pug
 
     if route === 'pages/berichten/berichten.pug'
-        include pages/berichten/berichten.pug
+      include pages/berichten/berichten.pug
     else if route === 'pages/zoeken/zoeken.pug'
-        include pages/zoeken/zoeken.pug
+      include pages/zoeken/zoeken.pug
     else 
-        include pages/profiel/profiel.pug
+      include pages/profiel/profiel.pug
 
     include components/footer/footer.pug
     script(src='index.js')
     style 
-        include index.scss
+      include index.css

@@ -1,0 +1,32 @@
+.KiesSpel{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.KiesSpel div{
+    position: relative;
+    max-height: 390px;
+    overflow: hidden;
+    margin: .2em;
+}
+
+.KiesSpel h3{
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.KiesSpel img{
+    height: 100%;
+}
+
+@media screen and (min-width: 800px) {
+    .KiesSpel div {
+      max-width: 44vw;
+    }
+  }
