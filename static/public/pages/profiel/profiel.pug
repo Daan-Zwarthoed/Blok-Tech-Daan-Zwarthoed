@@ -3,16 +3,6 @@ if !filterStap
 else if filterStap === 'KiesSpel'
     include KiesSpel/KiesSpel.pug
 else
-    h1= filterStap
-    h3 Wat is uw username
-    input(type="text")
-    h3 Wat is uw rank upload een foto om het te bewijzen
+    include Filteren/Filteren.pug
 
-if filterStap === 'Rocket League'
-    h1 Rocket League
-else if filterStap === 'Schaken'
-    h1 Schaken
-else if filterStap === 'Apex Legends'
-    h1 ApexLegends
-else if filterStap === 'Modern Warfare'
-    h1 ModernWarfare
+
