@@ -1,14 +1,69 @@
 h1= filterStap
-h3 Wat is je username
-input(type="text")
-h3 Wat is je rank upload een foto om het te bewijzen
-<input type="file" id="img" name="img" accept="image/*">
+form(action="/profiel" method="post" class="filteren")
 
-if filterStap === 'Rocket League'
-    h1 Rocket League
-else if filterStap === 'Schaken'
-    h1 Schaken
-else if filterStap === 'Apex Legends'
-    h1 ApexLegends
-else if filterStap === 'Modern Warfare'
-    h1 ModernWarfare
+  input(type="text" name="game" value=filterStap style="display:none")
+
+  label(name="name") Wat is je username?
+  input(type="text" name="name")
+
+  label(name="rankedOfCasual") Speel je ranked of casual?
+  div(class="choiceDiv")
+    input(type="checkbox" id="casual" name="rankedOfCasual" value="casual")
+    label(for="casual") Casual
+  div(class="choiceDiv")
+    input(type="checkbox" id="ranked" name="rankedOfCasual" value="ranked")
+    label(for="ranked") Ranked
+
+    div(class="show-proof-rank proof-rank")
+        label(name="rank") Upload een foto met bewijs van jou rank
+        <input type="file" id="img" name="rank" accept="image/*">
+
+  if filterStap === 'Rocket League'
+    label(name="mode") Welke mode speel je?
+    div(class="choiceDiv")
+        input(type="checkbox" id="1v1" name="mode" value="1v1")
+        label(for="1v1") 1v1
+    div(class="choiceDiv")
+        input(type="checkbox" id="2v2" name="mode" value="2v2")
+        label(for="2v2") 2v2
+    div(class="choiceDiv")
+        input(type="checkbox" id="3v3" name="mode" value="3v3")
+        label(for="3v3") 3v3
+
+  else if filterStap === 'Schaken'
+    label(name="mode") Welke tijd speel je?
+    div(class="choiceDiv")
+        input(type="checkbox" id="1min" name="mode" value="1min")
+        label(for="1min") 1 minuut
+    div(class="choiceDiv")
+        input(type="checkbox" id="5min" name="mode" value="5min")
+        label(for="5min") 5 minuten
+    div(class="choiceDiv")
+        input(type="checkbox" id="10min" name="mode" value="10min")
+        label(for="10min") 10 minuten
+    div(class="choiceDiv")
+        input(type="checkbox" id="30min" name="mode" value="30min")
+        label(for="30min") 30 minuten
+
+  else if filterStap === 'Apex Legends'
+    label(name="mode") Welke mode speel je?
+    div(class="choiceDiv")
+        input(type="checkbox" id="battleRoyale" name="mode" value="battleRoyale")
+        label(for="battleRoyale") Battle Royale
+    div(class="choiceDiv")
+        input(type="checkbox" id="arena" name="mode" value="arena")
+        label(for="arena") Arena
+
+  else if filterStap === 'Modern Warfare'
+    label(name="mode") Welke mode speel je?
+    div(class="choiceDiv")
+        input(type="checkbox" id="battleRoyale" name="mode" value="battleRoyale")
+        label(for="battleRoyale") Battle Royale
+    div(class="choiceDiv")
+        input(type="checkbox" id="standard" name="mode" value="standard")
+        label(for="standard") Standard
+
+  button submit
+
+style
+  include Filteren.css

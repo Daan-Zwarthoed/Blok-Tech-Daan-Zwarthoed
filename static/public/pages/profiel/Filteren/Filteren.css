@@ -1,0 +1,33 @@
+.filteren *{
+    display: flex;
+}
+
+.filteren > label{
+    margin-top: 1em;
+}
+
+.filteren .choiceDiv{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+input[type="radio"]:checked ~ .show-proof-rank,
+input[type="checkbox"]:checked ~ .show-proof-rank{
+  opacity: 1;
+  max-height: 100px; /* little bit of a magic number :( */
+  overflow: visible;
+}
+
+.show-proof-rank {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.proof-rank{
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    font-size: .5em;
+}

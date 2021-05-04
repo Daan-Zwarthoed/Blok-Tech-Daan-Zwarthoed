@@ -2,8 +2,10 @@ const express = require('express');
 const app = express();
 const port = 8080;
 
-app.set('views', './static/public')
-app.set('view engine', 'pug')
+app.set('views', './static/public');
+app.use(express.json());
+app.use(express.urlencoded());
+app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
   res.render('index', {route: 'pages/profiel/profiel.pug', title: 'Profiel'});
@@ -24,6 +26,11 @@ app.get('/filteren/apexlegends', (req, res) => {
 })
 app.get('/filteren/modernwarfare', (req, res) => {
   res.render('index', {route: 'pages/profiel/profiel.pug', title: 'Filteren', filterStap: 'Modern Warfare'});
+})
+
+app.post('/profiel', (req, res) => {
+  console.log(req.body);
+  res.render('index', {route: 'pages/profiel/profiel.pug', title: 'Profiel', profielInfo: req.body});
 })
 
 app.get('/zoeken', (req, res) => {
