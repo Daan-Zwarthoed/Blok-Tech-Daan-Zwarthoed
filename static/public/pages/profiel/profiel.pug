@@ -1,8 +1,25 @@
-if !filterStap
+if !filterStap && !profielInfo
     a(href="/filteren") start met filteren
 else if filterStap === 'KiesSpel'
     include KiesSpel/KiesSpel.pug
-else
+else if filterStap !== 'KiesSpel' && filterStap
     include Filteren/Filteren.pug
+else 
+    a(href="/filteren") Filters aanpassen
+
+    h3 Jouw game
+    p= profielInfo.game
+    h3 Jouw username
+    p= profielInfo.name
+    h3 Ranked of casual
+    p= profielInfo.rankedOfCasual
+    if foto
+        h3 Rank/rating bewijs
+
+        img(src=foto.buffer)
+    h3 Mode
+    p= profielInfo.mode
+
+
 
 

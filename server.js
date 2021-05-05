@@ -6,6 +6,8 @@ app.set('views', './static/public');
 app.use(express.json());
 app.use(express.urlencoded());
 app.set('view engine', 'pug');
+var multer  = require('multer')
+var upload = multer({ dest: 'uploads/'});
 
 app.get('/', (req, res) => {
   res.render('index', {route: 'pages/profiel/profiel.pug', title: 'Profiel'});
@@ -28,9 +30,8 @@ app.get('/filteren/modernwarfare', (req, res) => {
   res.render('index', {route: 'pages/profiel/profiel.pug', title: 'Filteren', filterStap: 'Modern Warfare'});
 })
 
-app.post('/profiel', (req, res) => {
-  console.log(req.body);
-  res.render('index', {route: 'pages/profiel/profiel.pug', title: 'Profiel', profielInfo: req.body});
+app.post('/profiel', upload.single('rankProof'), function (req, res, next) {
+  res.render('index', {route: 'pages/profiel/profiel.pug', title: 'Profiel', profielInfo: req.body, foto: req.file});
 })
 
 app.get('/zoeken', (req, res) => {

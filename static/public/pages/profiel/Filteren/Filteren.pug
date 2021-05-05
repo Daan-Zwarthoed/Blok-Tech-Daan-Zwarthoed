@@ -1,5 +1,5 @@
 h1= filterStap
-form(action="/profiel" method="post" class="filteren")
+form(action="/profiel" method="post" class="filteren" enctype="multipart/form-data")
 
   input(type="text" name="game" value=filterStap style="display:none")
 
@@ -15,8 +15,8 @@ form(action="/profiel" method="post" class="filteren")
     label(for="ranked") Ranked
 
     div(class="show-proof-rank proof-rank")
-        label(name="rank") Upload een foto met bewijs van jou rank
-        <input type="file" id="img" name="rank" accept="image/*">
+        label(name="rankProof") Upload een foto met bewijs van jou rank/rating
+        <input type="file" id="img" name="rankProof" accept="image/*">
 
   if filterStap === 'Rocket League'
     label(name="mode") Welke mode speel je?
