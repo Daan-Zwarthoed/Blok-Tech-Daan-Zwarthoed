@@ -1,13 +1,23 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 const port = 8080;
 
 app.set('views', './static/public');
+app.use(express.static('static/public'))
 app.use(express.json());
 app.use(express.urlencoded());
 app.set('view engine', 'pug');
 var multer  = require('multer')
-var upload = multer({ dest: 'uploads/'});
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+      cb(null, 'static/public/uploads/');
+  },
+  filename: function(req, file, cb) {
+      cb(null, file.originalname)
+  }
+});
+var upload = multer({ storage: storage});
 
 app.get('/', (req, res) => {
   res.render('index', {route: 'pages/profiel/profiel.pug', title: 'Profiel'});

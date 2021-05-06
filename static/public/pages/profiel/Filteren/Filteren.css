@@ -1,8 +1,12 @@
-.filteren *{
+.filteren{
+ margin-left: 20px;
+}
+
+.filteren form *{
     display: flex;
 }
 
-.filteren > label{
+.filteren form > label{
     margin-top: 1em;
 }
 

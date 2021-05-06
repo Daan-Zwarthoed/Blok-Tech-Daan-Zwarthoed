@@ -1,10 +1,11 @@
 if !filterStap && !profielInfo
-    a(href="/filteren") start met filteren
+  a(href="/filteren") start met filteren
 else if filterStap === 'KiesSpel'
-    include KiesSpel/KiesSpel.pug
+  include KiesSpel/KiesSpel.pug
 else if filterStap !== 'KiesSpel' && filterStap
-    include Filteren/Filteren.pug
+  include Filteren/Filteren.pug
 else 
+  div.profiel
     a(href="/filteren") Filters aanpassen
 
     h3 Jouw game
@@ -12,14 +13,22 @@ else
     h3 Jouw username
     p= profielInfo.name
     h3 Ranked of casual
-    p= profielInfo.rankedOfCasual
+    if profielInfo.rankedOfCasual
+      p= profielInfo.rankedOfCasual
+    else
+      p Geen voorkeur
+    h3 Rank/rating bewijs
     if foto
-        h3 Rank/rating bewijs
-
-        img(src=foto.buffer)
+      img(src=`/uploads/${foto.filename}`)
+    else 
+      p Geen bewijs van rank
     h3 Mode
-    p= profielInfo.mode
+    if profielInfo.mode
+      p= profielInfo.mode
+    else
+      p Geen voorkeur
 
-
+style 
+  include profiel.css
 
 
