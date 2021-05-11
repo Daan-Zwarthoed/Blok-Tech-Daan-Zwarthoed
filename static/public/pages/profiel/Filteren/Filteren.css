@@ -12,6 +12,15 @@
   align-items: center;
   flex-wrap: wrap;
 }
+.filteren .choiceDiv input {
+  margin-right: 0.2em;
+}
+.filteren .proof-rank {
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  font-size: 0.5em;
+}
 .filteren input[type=radio]:checked ~ .show-proof-rank,
 .filteren input[type=checkbox]:checked ~ .show-proof-rank {
   opacity: 1;
@@ -22,10 +31,4 @@
   opacity: 0;
   max-height: 0;
   overflow: hidden;
-}
-.filteren .proof-rank {
-  display: flex;
-  width: 100vw;
-  flex-direction: column;
-  font-size: 0.5em;
 }

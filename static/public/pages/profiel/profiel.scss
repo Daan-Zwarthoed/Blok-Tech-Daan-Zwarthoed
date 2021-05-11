@@ -1,3 +1,10 @@
+.nogGeenFilters{
+    p{
+        margin-bottom: 10px;
+        font-size: 1em;
+    }
+}
+
 .profiel {
     margin-left: 20px;
 
@@ -7,5 +14,9 @@
 
     img{
         max-width: 30vw;
+    }
+
+    h3:first-of-type{
+        margin-top: 1em;
     }
 }

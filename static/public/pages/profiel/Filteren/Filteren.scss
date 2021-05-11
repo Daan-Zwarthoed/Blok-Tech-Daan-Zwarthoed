@@ -13,6 +13,17 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+
+    input{
+        margin-right: .2em;
+    }
+  }
+
+  .proof-rank {
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    font-size: 0.5em;
   }
 
   input[type="radio"]:checked ~ .show-proof-rank,
@@ -26,12 +37,5 @@
     opacity: 0;
     max-height: 0;
     overflow: hidden;
-  }
-
-  .proof-rank {
-    display: flex;
-    width: 100vw;
-    flex-direction: column;
-    font-size: 0.5em;
   }
 }

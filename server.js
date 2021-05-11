@@ -41,7 +41,7 @@ app.get('/filteren/modernwarfare', (req, res) => {
 })
 
 app.post('/profiel', upload.single('rankProof'), function (req, res, next) {
-  res.render('index', {route: 'pages/profiel/profiel.pug', title: 'Profiel', profielInfo: req.body, foto: req.file});
+  res.render('index', {route: 'pages/profiel/profiel.pug', title: 'Profiel', profielInfo: req.body, rankProof: req.file});
 })
 
 app.get('/zoeken', (req, res) => {
