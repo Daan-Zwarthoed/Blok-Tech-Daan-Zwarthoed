@@ -1,3 +1,13 @@
+mixin checkbox(name, id, title)
+   div(class="choiceDiv")
+            input(type="checkbox" id=id name=name value=id)
+            label(for=id)= title
+
+            if id === "Ranked"
+                div(class="show-proof-rank proof-rank")
+                    label(name="rankProof") Upload een foto met bewijs van jou rank/rating
+                    input(type="file" id="img" name="rankProof" accept="image/*")
+           
 div.filteren
     h1= filterStap
     form(action="/profiel" method="post" enctype="multipart/form-data")
@@ -8,62 +18,31 @@ div.filteren
         input(type="text" name="name" required)
 
         label(name="rankedOfCasual") Speel je ranked of casual?
-        div(class="choiceDiv")
-            input(type="checkbox" id="Casual" name="rankedOfCasual" value="Casual")
-            label(for="Casual") Casual
-        div(class="choiceDiv")
-            input(type="checkbox" id="Ranked" name="rankedOfCasual" value="Ranked")
-            label(for="Ranked") Ranked
-
-            div(class="show-proof-rank proof-rank")
-                label(name="rankProof") Upload een foto met bewijs van jou rank/rating
-                <input type="file" id="img" name="rankProof" accept="image/*">
+        +checkbox("rankedOfCasual", "Casual", "Casual")
+        +checkbox("rankedOfCasual", "Ranked", "Ranked")  
 
         if filterStap === 'Rocket League'
             label(name="mode") Welke mode speel je?
-            div(class="choiceDiv")
-                input(type="checkbox" id="1v1" name="mode" value="1v1") 
-                label(for="1v1") 1v1
-            div(class="choiceDiv")
-                input(type="checkbox" id="2v2" name="mode" value="2v2")
-                label(for="2v2") 2v2
-            div(class="choiceDiv")
-                input(type="checkbox" id="3v3" name="mode" value="3v3")
-                label(for="3v3") 3v3
+            +checkbox("mode", "1v1", "1v1") 
+            +checkbox("mode", "2v2", "2v2") 
+            +checkbox("mode", "3v3", "3v3") 
 
         else if filterStap === 'Schaken'
             label(name="mode") Welke tijd speel je?
-            div(class="choiceDiv")
-                input(type="checkbox" id="1min" name="mode" value="1min")
-                label(for="1min") 1 minuut
-            div(class="choiceDiv")
-                input(type="checkbox" id="5min" name="mode" value="5min")
-                label(for="5min") 5 minuten
-            div(class="choiceDiv")
-                input(type="checkbox" id="10min" name="mode" value="10min")
-                label(for="10min") 10 minuten
-            div(class="choiceDiv")
-                input(type="checkbox" id="30min" name="mode" value="30min")
-                label(for="30min") 30 minuten
+             +checkbox("mode", "1min", "1 minuut") 
+             +checkbox("mode", "5min", "5 minuten") 
+             +checkbox("mode", "10min", "10 minuten") 
+             +checkbox("mode", "30min", "30 minuten") 
 
         else if filterStap === 'Apex Legends'
             label(name="mode") Welke mode speel je?
-            div(class="choiceDiv")
-                input(type="checkbox" id="Battle Royale" name="mode" value="Battle Royale")
-                label(for="Battle Royale") Battle Royale
-            div(class="choiceDiv")
-                input(type="checkbox" id="Arena" name="mode" value="Arena")
-                label(for="Arena") Arena
+             +checkbox("mode", "Battle Royale", "Battle Royale") 
+             +checkbox("mode", "Arena", "Arena") 
 
         else if filterStap === 'Modern Warfare'
             label(name="mode") Welke mode speel je?
-            div(class="choiceDiv")
-                input(type="checkbox" id="Battle Royale" name="mode" value="Battle Royale")
-                label(for="Battle Royale") Battle Royale
-            div(class="choiceDiv")
-                input(type="checkbox" id="Standard" name="mode" value="Standard")
-                label(for="Standard") Standard
-
+             +checkbox("mode", "Battle Royale", "Battle Royale") 
+             +checkbox("mode", "Standard", "Standard") 
         button submit
 
 style
