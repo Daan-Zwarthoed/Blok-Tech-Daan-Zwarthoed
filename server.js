@@ -45,7 +45,11 @@ app.post('/profiel', upload.single('rankProof'), function (req, res, next) {
 })
 
 app.get('/zoeken', (req, res) => {
-  res.render('index', {route: 'pages/zoeken/zoeken.pug', title: 'Zoeken'});
+  res.render('index', {route: 'pages/zoeken/zoeken.pug', title: 'Zoeken', newIndex: {newIndex: 0}});
+})
+
+app.post('/zoeken', upload.none(), function (req, res, next) {
+  res.render('index', {route: 'pages/zoeken/zoeken.pug', title: 'Zoeken', newIndex: req.body});
 })
 
 app.get('/berichten', (req, res) => {

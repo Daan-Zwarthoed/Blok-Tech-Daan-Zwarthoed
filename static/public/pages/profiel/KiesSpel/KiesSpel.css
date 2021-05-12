@@ -3,10 +3,10 @@
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
+  padding-bottom: 5em;
 }
 .KiesSpel div {
   position: relative;
-  max-height: 390px;
   overflow: hidden;
   margin: 0.2em;
 }
@@ -19,12 +19,11 @@
   transform: translate(-50%, -50%);
 }
 .KiesSpel img {
-  height: 100%;
-}
-@media screen and (min-width: 800px) {
-  .KiesSpel div {
-    max-width: 44vw;
-  }
+  width: 90vw;
 }
 
-/*# sourceMappingURL=KiesSpel.css.map */
+@media screen and (max-width: 800px) {
+  .KiesSpel div {
+    max-width: 44vw !important;
+  }
+}

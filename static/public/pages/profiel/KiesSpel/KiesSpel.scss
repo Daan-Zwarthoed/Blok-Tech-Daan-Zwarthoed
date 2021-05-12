@@ -3,12 +3,13 @@
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
+  padding-bottom: 5em;
 
   div {
     position: relative;
-    max-height: 390px;
     overflow: hidden;
     margin: 0.2em;
+
   }
 
   h3 {
@@ -21,12 +22,12 @@
   }
 
   img {
-    height: 100%;
+    width: 90vw;
   }
+}
 
-  @media screen and (min-width: 800px) {
-    div {
-      max-width: 44vw;
-    }
+@media screen and (max-width: 800px) {
+  .KiesSpel div {
+    max-width: 44vw !important;
   }
 }
