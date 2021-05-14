@@ -1,3 +1,4 @@
+const cool = require('cool-ascii-faces');
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -8,6 +9,7 @@ const port = 8080;
 app.set('views', './static/public');
 app.use(express.static('static/public'))
 app.use(express.json());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded());
 app.set('view engine', 'pug');
@@ -21,6 +23,9 @@ const storage = multer.diskStorage({
   }
 });
 var upload = multer({ storage: storage});
+
+app.get('/cool', (req, res) => res.send(cool()))
+
 
 app.get('/', (req, res) => {
   res.render('index', {route: 'pages/Filter/Filter.pug', title: 'Filteren'});
