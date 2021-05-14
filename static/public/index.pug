@@ -2,18 +2,18 @@ doctype html
 html(lang='en')
   head
     title= title
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
   body
-    include components/header/header.pug
+    include components/Header/Header.pug
 
-    if route === 'pages/berichten/berichten.pug'
-      include pages/berichten/berichten.pug
-    else if route === 'pages/zoeken/zoeken.pug'
-      include pages/zoeken/zoeken.pug
+    if route === 'Pages/Berichten/Berichten.pug'
+      include Pages/Berichten/Berichten.pug
+    else if route === 'Pages/Zoeken/Zoeken.pug'
+      include Pages/Zoeken/Zoeken.pug
     else 
-      include pages/Filter/Filter.pug
+      include Pages/Filter/Filter.pug
 
     include components/footer/footer.pug
-    script(src='index.js')
-    style 
-      include index.css
+
+  style 
+    include Index.css
