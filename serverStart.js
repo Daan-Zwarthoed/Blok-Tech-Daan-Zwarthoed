@@ -1,2 +1,3 @@
 const open = require('open');
-open(`http://localhost:8080`);
+const port = process.env.PORT || 8080;
+open(`http://localhost:${port}`);

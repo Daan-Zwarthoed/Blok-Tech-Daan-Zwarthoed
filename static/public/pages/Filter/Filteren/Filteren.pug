@@ -1,46 +1,46 @@
 mixin checkbox(name, id, title)
-   div(class="choiceDiv")
-            input(type="checkbox" id=id name=name value=id)
-            label(for=id)= title
+  div(class="choiceDiv")
+    input(type="checkbox" id=id name=name value=id)
+    label(for=id)= title
 
-            if id === "Ranked"
-                div(class="show-proof-rank proof-rank")
-                    label(name="rankProof") Upload een foto met bewijs van jou rank/rating
-                    input(type="file" id="img" name="rankProof" accept="image/*")
-           
+    if id === "Ranked"
+      div(class="show-proof-rank proof-rank")
+        label(name="rankProof") Upload een foto met bewijs van jou rank/rating
+        input(type="file" id="img" name="rankProof" accept="image/*")
+
 div.filteren
-    h1= filterStap
-    form(action="/zoeken" method="post" enctype="multipart/form-data")
+  h1= filterStap
+  form(action="/zoeken" method="post" enctype="multipart/form-data")
 
-        input(type="text" name="game" value=filterStap style="display:none" readonly)
+    input(type="text" name="game" value=filterStap style="display:none" readonly)
 
-        label(name="rankedOfCasual") Speel je ranked of casual?
-        +checkbox("rankedOfCasual", "Casual", "Casual")
-        +checkbox("rankedOfCasual", "Ranked", "Ranked")  
+    label(name="rankedOfCasual") Speel je ranked of casual?
+    +checkbox("rankedOfCasual", "Casual", "Casual")
+    +checkbox("rankedOfCasual", "Ranked", "Ranked")  
 
-        if filterStap === 'Rocket League'
-            label(name="mode") Welke mode speel je?
-            +checkbox("mode", "1v1", "1v1") 
-            +checkbox("mode", "2v2", "2v2") 
-            +checkbox("mode", "3v3", "3v3") 
+    if filterStap === 'Rocket League'
+      label(name="mode") Welke mode speel je?
+      +checkbox("mode", "1v1", "1v1") 
+      +checkbox("mode", "2v2", "2v2") 
+      +checkbox("mode", "3v3", "3v3") 
 
-        else if filterStap === 'Schaken'
-            label(name="mode") Welke tijd speel je?
-            +checkbox("mode", "1min", "1 minuut") 
-            +checkbox("mode", "5min", "5 minuten") 
-            +checkbox("mode", "10min", "10 minuten") 
-            +checkbox("mode", "30min", "30 minuten") 
+    else if filterStap === 'Schaken'
+      label(name="mode") Welke tijd speel je?
+      +checkbox("mode", "1min", "1 minuut") 
+      +checkbox("mode", "5min", "5 minuten") 
+      +checkbox("mode", "10min", "10 minuten") 
+      +checkbox("mode", "30min", "30 minuten") 
 
-        else if filterStap === 'Apex Legends'
-            label(name="mode") Welke mode speel je?
-            +checkbox("mode", "Battle Royale", "Battle Royale") 
-            +checkbox("mode", "Arena", "Arena") 
+    else if filterStap === 'Apex Legends'
+      label(name="mode") Welke mode speel je?
+      +checkbox("mode", "Battle Royale", "Battle Royale") 
+      +checkbox("mode", "Arena", "Arena") 
 
-        else if filterStap === 'Modern Warfare'
-            label(name="mode") Welke mode speel je?
-            +checkbox("mode", "Battle Royale", "Battle Royale") 
-            +checkbox("mode", "Standard", "Standard") 
-        button submit
+    else if filterStap === 'Modern Warfare'
+      label(name="mode") Welke mode speel je?
+      +checkbox("mode", "Battle Royale", "Battle Royale") 
+      +checkbox("mode", "Standard", "Standard") 
+    button submit
 
 style
   include Filteren.css

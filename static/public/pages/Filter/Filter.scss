@@ -1,15 +1,15 @@
 .profiel {
+  margin-left: 20px;
+
+  p {
     margin-left: 20px;
+  }
 
-    p{
-        margin-left: 20px;
-    }
+  img {
+    max-width: 30vw;
+  }
 
-    img{
-        max-width: 30vw;
-    }
-
-    h3:first-of-type{
-        margin-top: 1em;
-    }
+  h3:first-of-type {
+    margin-top: 1em;
+  }
 }
