@@ -20,37 +20,41 @@ const storage = multer.diskStorage({
 var upload = multer({ storage: storage});
 
 app.get('/', (req, res) => {
-  res.render('index', {route: 'pages/profiel/profiel.pug', title: 'Profiel'});
+  res.render('index', {route: 'pages/Filter/Filter.pug', title: 'Filteren'});
 })
 
 app.get('/filteren', (req, res) => {
-  res.render('index', {route: 'pages/profiel/profiel.pug', title: 'Filteren', filterStap: 'KiesSpel'});
+  res.render('index', {route: 'pages/Filter/Filter.pug', title: 'Filteren', filterStap: 'KiesSpel'});
 })
 
 app.get('/filteren/rocketleague', (req, res) => {
-  res.render('index', {route: 'pages/profiel/profiel.pug', title: 'Filteren', filterStap: 'Rocket League'});
+  res.render('index', {route: 'pages/Filter/Filter.pug', title: 'Filteren', filterStap: 'Rocket League'});
 })
 app.get('/filteren/schaken', (req, res) => {
-  res.render('index', {route: 'pages/profiel/profiel.pug', title: 'Filteren', filterStap: 'Schaken'});
+  res.render('index', {route: 'pages/Filter/Filter.pug', title: 'Filteren', filterStap: 'Schaken'});
 })
 app.get('/filteren/apexlegends', (req, res) => {
-  res.render('index', {route: 'pages/profiel/profiel.pug', title: 'Filteren', filterStap: 'Apex Legends'});
+  res.render('index', {route: 'pages/Filter/Filter.pug', title: 'Filteren', filterStap: 'Apex Legends'});
 })
 app.get('/filteren/modernwarfare', (req, res) => {
-  res.render('index', {route: 'pages/profiel/profiel.pug', title: 'Filteren', filterStap: 'Modern Warfare'});
+  res.render('index', {route: 'pages/Filter/Filter.pug', title: 'Filteren', filterStap: 'Modern Warfare'});
 })
 
-app.post('/profiel', upload.single('rankProof'), function (req, res, next) {
-  res.render('index', {route: 'pages/profiel/profiel.pug', title: 'Profiel', profielInfo: req.body, rankProof: req.file});
+app.post('/Filter', upload.single('rankProof'), function (req, res, next) {
+  res.render('index', {route: 'pages/Filter/Filter.pug', title: 'Filteren', FilterInfo: req.body, rankProof: req.file});
 })
 
 app.get('/zoeken', (req, res) => {
-  res.render('index', {route: 'pages/zoeken/zoeken.pug', title: 'Zoeken', newIndex: {newIndex: 0}});
+  res.render('index', {route: 'pages/zoeken/zoeken.pug', title: 'Zoeken'});
 })
 
-app.post('/zoeken', upload.none(), function (req, res, next) {
-  res.render('index', {route: 'pages/zoeken/zoeken.pug', title: 'Zoeken', newIndex: req.body});
+app.post('/zoeken', upload.single('rankProof'), function (req, res, next) {
+  res.render('index', {route: 'pages/zoeken/zoeken.pug', title: 'Zoeken', filterInfo: req.body, rankProof: req.file});
 })
+
+// app.post('/zoeken', upload.none(), function (req, res, next) {
+//   res.render('index', {route: 'pages/zoeken/zoeken.pug', title: 'Zoeken', newIndex: req.body});
+// })
 
 app.get('/berichten', (req, res) => {
   res.render('index', {route: 'pages/berichten/berichten.pug', title: 'Berichten'});

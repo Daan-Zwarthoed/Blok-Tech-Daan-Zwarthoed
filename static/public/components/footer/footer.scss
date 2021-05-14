@@ -1,10 +1,11 @@
 .footer {
   width: 100vw;
-  height: 5em !important;
+  height: 3em !important;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
+ 
 
   ul {
     display: flex;
@@ -28,8 +29,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
     width: 100%;
+  }
+
+  i{
+    font-size: 1.2em;
+    margin-right: .3em;
+  }
+
+  .Filteren .Filteren,
+  .Zoeken .Zoeken,
+  .Berichten .Berichten{
+    background-color: #FFD8BE;
   }
 }
 

@@ -10,12 +10,9 @@ mixin checkbox(name, id, title)
            
 div.filteren
     h1= filterStap
-    form(action="/profiel" method="post" enctype="multipart/form-data")
+    form(action="/zoeken" method="post" enctype="multipart/form-data")
 
         input(type="text" name="game" value=filterStap style="display:none" readonly)
-
-        label(name="name") Wat is je username?
-        input(type="text" name="name" required)
 
         label(name="rankedOfCasual") Speel je ranked of casual?
         +checkbox("rankedOfCasual", "Casual", "Casual")

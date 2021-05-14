@@ -1,6 +1,3 @@
-
-// mongo "mongodb+srv://daan-zwarthoed-blok-tec.ei2ci.mongodb.net/myFirstDatabase" --username DaanZwarthoed
-
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 

@@ -1,11 +1,20 @@
 div.footer 
-    ul
-        li 
-            a(href='/') profiel
-        li 
-            a(href='/zoeken') zoeken
-        li 
-            a(href='/berichten') berichten
+  ul(class=title)
+    li.Filteren 
+      a(href='/') 
+        i(class="fa fa-filter")
+        p filteren
+    li.Zoeken 
+      a(href='/zoeken')
+        i(class="fa fa-search")
+        p zoeken
+    li.Berichten 
+      a(href='/berichten')
+        i(class="fa fa-comment")
+        p berichten
+
+
+
 
 style
-    include footer.css
+  include footer.css

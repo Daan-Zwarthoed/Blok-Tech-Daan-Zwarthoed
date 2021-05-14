@@ -1,6 +1,6 @@
-- var users = [{name: "daanzh", game: "Rocket League", rankedOfCasual: "casual", mode: "1v1"}, {name: "stormvv", game: "Rocket League", rankedOfCasual: ["casual", "ranked"], mode: ["1v1", "2v2", "3v3"]}, {name: "tvdh18", game: "Modern Warfare", rankedOfCasual: "casual", mode: ["Battle Royale, Standard"]}, {name: "lenq123", game: "Chess", rankedOfCasual: "casual", mode: "1min"}]
+- var users = [{name: "daanzh", game: "Rocket League", rankedOfCasual: "casual", mode: "1v1"}, {name: "stormvv", game: "Rocket League", rankedOfCasual: ["casual", "ranked"], mode: ["1v1", "2v2", "3v3"]}, {name: "tvdh18", game: "Modern Warfare", rankedOfCasual: "casual", mode: ["Battle Royale", "Standard"]}, {name: "lenq123", game: "Chess", rankedOfCasual: "casual", mode: "1min"}]
 
-- var filter = {name: "daanzh", game: "Rocket League", rankedOfCasual: "casual", mode: "1v1"};
+- var filter = filterInfo;
 
 - var rankedOfCasualMatched = false
 
@@ -8,75 +8,63 @@
 
 - var filteredUsers = []
 
-- var index = newIndex.newIndex
+- var index = 0
 
-each user in users
-  if !filter.rankedOfCasual
-    - rankedOfCasualMatched = true
-  if Array.isArray(filter.rankedOfCasual)
-    each rankedOfCasualFilter in filter.rankedOfCasual
-      if user.rankedOfCasual.includes(rankedOfCasualFilter)
-        - rankedOfCasualMatched = true
-  else 
-    if user.rankedOfCasual.includes(filter.rankedOfCasual)
-    - rankedOfCasualMatched = true
+- var test = 0
 
-  if !filter.mode
-    - modeMatched = true
-  if Array.isArray(filter.mode)
-    each modeFilter in filter.mode
-      if user.mode.includes(modeFilter)
-        - modeMatched = true
-  else 
-    if user.mode.includes(filter.mode)
+if filter
+  each user in users
+    if !filter.rankedOfCasual
+      - rankedOfCasualMatched = true
+    if Array.isArray(filter.rankedOfCasual)
+      each rankedOfCasualFilter in filter.rankedOfCasual
+        if user.rankedOfCasual.includes(rankedOfCasualFilter)
+          - rankedOfCasualMatched = true
+    else 
+      if user.rankedOfCasual.includes(filter.rankedOfCasual)
+      - rankedOfCasualMatched = true
+
+    if !filter.mode
       - modeMatched = true
+    if Array.isArray(filter.mode)
+      each modeFilter in filter.mode
+        if user.mode.includes(modeFilter)
+          - modeMatched = true
+    else 
+      if user.mode.includes(filter.mode)
+        - modeMatched = true
 
-  if user.game === filter.game && rankedOfCasualMatched && modeMatched
-    - filteredUsers.push(user)
-  - rankedOfCasualMatched = false
-  - modeMatched = false
+    if user.game === filter.game && rankedOfCasualMatched && modeMatched
+      - filteredUsers.push(user)
+    - rankedOfCasualMatched = false
+    - modeMatched = false
 
+else 
+  - filteredUsers = users
+div.users
+  each filteredUser in filteredUsers
+    div.user
+      h3= filteredUser.name
 
-div.user
-  h3= filteredUsers[index].name
-
-  p= filteredUsers[index].game
-
-  if Array.isArray(filteredUsers[index].rankedOfCasual)
-    ul
-      each rankedOfCasualFilter in filteredUsers[index].rankedOfCasual
-        li= rankedOfCasualFilter
-  else if filteredUsers[index].rankedOfCasual
-    p= filteredUsers[index].rankedOfCasual
-  else
-    p Geen voorkeur
-
-  if Array.isArray(filteredUsers[index].mode)
-    ul
-      each modeFilter in filteredUsers[index].mode
-        li= modeFilter
-  else if filteredUsers[index].mode
-    p= filteredUsers[index].mode
-  else
-    p Geen voorkeur
-
-  a(href="https://www.youtube.com/watch?v=dQw4w9WgXcQ").defaultButton bericht
-
-div.userChoice 
-  ul
-    li
-      if index > 0
-        form(action="/zoeken" method="post" enctype="multipart/form-data")
-          input(type="text" name="newIndex" value=index - 1 required style="display:none" readonly)
-          button &#8678;
-    li
-      p= `${+index + 1}/${filteredUsers.length}`
-    li
-      if filteredUsers.length > +index + 1
-        form(action="/zoeken" method="post" enctype="multipart/form-data")
-          input(type="text" name="newIndex" value=+index + 1 required style="display:none" readonly)
-          button &#8680;
-
+      h4= filteredUser.game
+      div.paddingDiv
+        if Array.isArray(filteredUser.rankedOfCasual)
+          each rankedOfCasualFilter in filteredUser.rankedOfCasual
+            p= rankedOfCasualFilter
+        else if filteredUser.rankedOfCasual
+          p= filteredUser.rankedOfCasual
+        else
+          p Geen voorkeur
+      div.paddingDiv
+        if Array.isArray(filteredUser.mode)
+          each modeFilter in filteredUser.mode
+            p= modeFilter
+        else if filteredUser.mode
+          p= filteredUser.mode
+        else
+          p Geen voorkeur
+      div.linkDiv
+        a(href="https://www.youtube.com/watch?v=dQw4w9WgXcQ").defaultButton bericht
 
 
 style 
