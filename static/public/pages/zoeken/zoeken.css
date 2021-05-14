@@ -8,11 +8,11 @@
 }
 
 .user {
-  background-color: #A69DFF;
   margin: 1em;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  border: solid 5px black;
 }
 .user h3 {
   font-size: 1.6em;

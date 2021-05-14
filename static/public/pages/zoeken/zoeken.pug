@@ -10,8 +10,6 @@
 
 - var index = 0
 
-- var test = 0
-
 if filter
   each user in users
     if !filter.rankedOfCasual
@@ -41,6 +39,9 @@ if filter
 
 else 
   - filteredUsers = users
+  div.nogGeenFilters
+    p Je hebt nog geen filters ingesteld. Klik op de knop hieronder om daar aan te beginnen
+    a(href="/filteren").defaultButton start met filteren
 div.users
   each filteredUser in filteredUsers
     div.user

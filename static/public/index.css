@@ -27,8 +27,10 @@ a.defaultButton {
 .nogGeenFilters {
   padding-top: 1em;
   padding-left: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .nogGeenFilters p {
-  margin-bottom: 1em;
-  font-size: 1em;
+  font-size: 1.2em;
 }

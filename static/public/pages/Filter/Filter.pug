@@ -1,12 +1,14 @@
-if !filterStap && !profielInfo
-  div.nogGeenFilters
-    p Je hebt nog geen filters ingesteld. Klik op de knop hieronder om daar aan te beginnen
-    a(href="/filteren").defaultButton start met filteren
-else if filterStap === 'KiesSpel'
+- var profielInfo = profielInfoVanDeBackendInProgress
+
+if filterStap === 'KiesSpel'
   include KiesSpel/KiesSpel.pug
 else if filterStap !== 'KiesSpel' && filterStap
   include Filteren/Filteren.pug
-else 
+else if !filterStap && !profielInfo
+  div.nogGeenFilters
+    p Je hebt nog geen filters ingesteld. Klik op de knop hieronder om daar aan te beginnen
+    a(href="/filteren").defaultButton start met filteren
+else
   div.profiel
     a(href="/filteren").defaultButton Filters aanpassen
 
