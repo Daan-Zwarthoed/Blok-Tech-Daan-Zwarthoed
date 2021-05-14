@@ -1,11 +1,14 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const bodyParser = require('body-parser');
 const port = 8080;
+
 
 app.set('views', './static/public');
 app.use(express.static('static/public'))
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded());
 app.set('view engine', 'pug');
 var multer  = require('multer')
