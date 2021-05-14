@@ -1,4 +1,3 @@
-const cool = require('cool-ascii-faces');
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -23,9 +22,6 @@ const storage = multer.diskStorage({
   }
 });
 var upload = multer({ storage: storage});
-
-app.get('/cool', (req, res) => res.send(cool()))
-
 
 app.get('/', (req, res) => {
   res.render('index', {route: 'pages/Filter/Filter.pug', title: 'Filteren'});
