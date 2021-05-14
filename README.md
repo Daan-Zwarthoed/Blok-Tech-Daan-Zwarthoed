@@ -20,6 +20,8 @@ Wanneer je de code hebt gedownload kan je npm install doen om alle dependencies 
   * sass
 * backend
   * mongodb  
+* devDependencies
+  * nodemon
 
 ### Site host
 Site is hosted on heroku
