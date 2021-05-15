@@ -1,5 +1,6 @@
 ## Demo link
-https://secure-everglades-43854.herokuapp.com/
+(https://secure-everglades-43854.herokuapp.com/)[https://secure-everglades-43854.herokuapp.com/]
+
 
 ## Description/Concept
 Voor mijn project heb ik een matching app gemaakt voor gamers. Zij kunnen dan een game kiezen die zij leuk vinden en daar dan filteren op ranked of casual spelen en bepaalde modes in die game.
