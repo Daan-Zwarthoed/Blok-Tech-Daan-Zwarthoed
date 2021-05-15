@@ -9,6 +9,14 @@
     margin-top: 1em;
   }
 
+  h1 {
+    font-size: 1.8em;
+  }
+
+  button{
+    margin-top: 1em;
+  }
+
   .choiceDiv {
     display: flex;
     align-items: center;
@@ -24,6 +32,13 @@
     width: 100vw;
     flex-direction: column;
     font-size: 0.5em;
+    margin-left: 2em;
+    font-size: 0.7em;
+
+    input{
+      width: 20vw;
+      margin-left: 1px;
+    }
   }
 
   input[type="radio"]:checked ~ .show-proof-rank,

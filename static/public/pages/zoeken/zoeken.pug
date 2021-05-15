@@ -1,72 +1,96 @@
-- var users = [{name: "daanzh", game: "Rocket League", rankedOfCasual: "casual", mode: "1v1"}, {name: "stormvv", game: "Rocket League", rankedOfCasual: ["casual", "ranked"], mode: ["1v1", "2v2", "3v3"]}, {name: "tvdh18", game: "Modern Warfare", rankedOfCasual: "casual", mode: ["Battle Royale", "Standard"]}, {name: "lenq123", game: "Chess", rankedOfCasual: "casual", mode: "1min"}]
+extends ../../index.pug
+block content
+  - var users = [{name: "daanzh", game: "Rocket League", rankedOfCasual: "ranked", mode: "1v1", rank:250}, {name: "stormvv", game: "Rocket League", rankedOfCasual: ["casual", "ranked"], mode: ["1v1", "2v2", "3v3"], rank: 350}, {name: "tvdh18", game: "Modern Warfare", rankedOfCasual: "casual", mode: ["Battle Royale", "Standard"]}, {name: "lenq123", game: "Chess", rankedOfCasual: ["casual", "ranked"], mode: "1min", rank: 1000}]
 
-- var filter = filterInfo;
+  - var filter = filterInfo
 
-- var rankedOfCasualMatched = false
+  - var rankedOfCasualMatched = false
 
-- var modeMatched = false
+  - var rankMatched = false
 
-- var filteredUsers = []
+  - var modeMatched = false
 
-- var index = 0
+  - var filteredUsers = []
 
-if filter
-  each user in users
-    if !filter.rankedOfCasual
-      - rankedOfCasualMatched = true
-    if Array.isArray(filter.rankedOfCasual)
-      each rankedOfCasualFilter in filter.rankedOfCasual
-        if user.rankedOfCasual.includes(rankedOfCasualFilter)
-          - rankedOfCasualMatched = true
-    else 
-      if user.rankedOfCasual.includes(filter.rankedOfCasual)
-      - rankedOfCasualMatched = true
+  - var index = 0
+  if filter
+    each user in users
+      if !filter.rankedOfCasual
+        - rankedOfCasualMatched = true
+      else if Array.isArray(filter.rankedOfCasual)
+        each rankedOfCasualFilter in filter.rankedOfCasual
+          if user.rankedOfCasual.includes(rankedOfCasualFilter)
+            - rankedOfCasualMatched = true
+      else 
+        if user.rankedOfCasual.includes(filter.rankedOfCasual)
+        - rankedOfCasualMatched = true
 
-    if !filter.mode
-      - modeMatched = true
-    if Array.isArray(filter.mode)
-      each modeFilter in filter.mode
-        if user.mode.includes(modeFilter)
-          - modeMatched = true
-    else 
-      if user.mode.includes(filter.mode)
+      if !filter.rank || !user.rank
+        - rankMatched = true
+      else if user.rank + 100 > +filter.rank && user.rank - 100 < +filter.rank
+        - rankMatched = true
+
+      if !filter.mode
         - modeMatched = true
+      else if Array.isArray(filter.mode)
+        each modeFilter in filter.mode
+          if user.mode.includes(modeFilter)
+            - modeMatched = true
+      else 
+        if user.mode.includes(filter.mode)
+          - modeMatched = true
 
-    if user.game === filter.game && rankedOfCasualMatched && modeMatched
-      - filteredUsers.push(user)
-    - rankedOfCasualMatched = false
-    - modeMatched = false
-
-else 
-  - filteredUsers = users
-  div.nogGeenFilters
-    p Je hebt nog geen filters ingesteld. Klik op de knop hieronder om daar aan te beginnen
-    a(href="/filteren").defaultButton start met filteren
-div.users
-  each filteredUser in filteredUsers
-    div.user
-      h3= filteredUser.name
-
-      h4= filteredUser.game
-      div.paddingDiv
-        if Array.isArray(filteredUser.rankedOfCasual)
-          each rankedOfCasualFilter in filteredUser.rankedOfCasual
-            p= rankedOfCasualFilter
-        else if filteredUser.rankedOfCasual
-          p= filteredUser.rankedOfCasual
-        else
-          p Geen voorkeur
-      div.paddingDiv
-        if Array.isArray(filteredUser.mode)
-          each modeFilter in filteredUser.mode
-            p= modeFilter
-        else if filteredUser.mode
-          p= filteredUser.mode
-        else
-          p Geen voorkeur
-      div.linkDiv
-        a(href="https://www.youtube.com/watch?v=dQw4w9WgXcQ").defaultButton bericht
+      if user.game === filter.game && rankedOfCasualMatched && modeMatched && rankMatched
+        - filteredUsers.push(user)
+      - rankedOfCasualMatched = false
+      - modeMatched = false
+      - rankMatched = false
+  else 
+    - filteredUsers = users
+      div.nogGeenFilters
+        p Je hebt nog geen filters ingesteld. Klik op de knop hieronder om daar aan te beginnen
+        a(href="/profiel/filteren").defaultButton start met filteren
 
 
-style 
-  include zoeken.css
+  if filteredUsers.length !== 0
+    div.users
+      each filteredUser in filteredUsers
+        div.user
+          h3= filteredUser.name
+
+          h4= filteredUser.game
+          div.paddingDiv
+            h5 Rank voorkeur
+            if Array.isArray(filteredUser.rankedOfCasual)
+              each rankedOfCasualFilter in filteredUser.rankedOfCasual
+                p= rankedOfCasualFilter
+            else if filteredUser.rankedOfCasual
+              p= filteredUser.rankedOfCasual
+            else
+              p Geen voorkeur
+          div.paddingDiv
+            h5 Mode
+            if Array.isArray(filteredUser.mode)
+              each modeFilter in filteredUser.mode
+                p= modeFilter
+            else if filteredUser.mode
+              p= filteredUser.mode
+            else
+              p Geen voorkeur
+          div.paddingDiv 
+            if filteredUser.rankedOfCasual === "ranked" || filteredUser.rankedOfCasual[1] === "ranked"
+              h5 Rank
+              if filteredUser.rank
+                p= filteredUser.rank
+              else 
+                p ?
+          div.linkDiv
+            a(href="https://www.youtube.com/watch?v=dQw4w9WgXcQ").defaultButton bericht
+  else
+    div.nogGeenFilters
+      p Er zijn helaas geen resultaten voor deze filters. Klik op de knop om het opnieuw te proberen
+      a(href="/profiel/filteren").defaultButton Opnieuw filteren
+
+
+block styles
+  include Zoeken.css

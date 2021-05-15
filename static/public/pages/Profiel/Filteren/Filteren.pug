@@ -1,14 +1,16 @@
-mixin checkbox(name, id, title)
+extends ../../../index.pug
+block content
+ mixin checkbox(name, id, title)
   div(class="choiceDiv")
     input(type="checkbox" id=id name=name value=id)
     label(for=id)= title
 
     if id === "Ranked"
       div(class="show-proof-rank proof-rank")
-        label(name="rankProof") Upload een foto met bewijs van jou rank/rating
-        input(type="file" id="img" name="rankProof" accept="image/*")
+        label(name="rank") Welke rank/elo ben je?
+        input(type="number" id="rank" name="rank" value="rank")
 
-div.filteren
+ div.filteren
   h1= filterStap
   form(action="/zoeken" method="post" enctype="multipart/form-data")
 
@@ -40,7 +42,10 @@ div.filteren
       label(name="mode") Welke mode speel je?
       +checkbox("mode", "Battle Royale", "Battle Royale") 
       +checkbox("mode", "Standard", "Standard") 
-    button submit
+    button.defaultButton submit
 
-style
+block styles
   include Filteren.css
+
+block scripts
+  include Filteren.js

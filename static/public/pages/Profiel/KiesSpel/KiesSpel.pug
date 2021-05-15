@@ -1,14 +1,16 @@
-mixin game(gameTitel, fotoLink, gameLink)
+extends ../../../index.pug
+block content
+ mixin game(gameTitel, fotoLink, gameLink)
   div
     a(href=gameLink)
       h3= gameTitel
       img(src=fotoLink)
 
-div.KiesSpel
-  +game("Rocket League", "https://rocketleague.media.zestyio.com/rl_home_f2p-launch_cross_10656.jpg", "filteren/rocketleague")
+ div.KiesSpel
+  +game("Rocket League", "https://rocketleague.media.zestyio.com/rl_home_f2p-launch_cross_10656.jpg", "/profiel/filteren/rocketleague")
   +game("Schaken", "https://assets.dicebreaker.com/chess-playing-hand.jpeg/BROK/resize/1920%3E/format/jpg/quality/80/chess-playing-hand.jpeg", "filteren/schaken")
   +game("Apex Legends", "https://d2skuhm0vrry40.cloudfront.net/2021/articles/2021-04-04-15-11/-1617545516055.jpg/EG11/thumbnail/750x422/format/jpg/quality/60", "filteren/apexlegends")
   +game("Modern Warfare", "https://www.gamekings.tv/wp-content/uploads/Sony.jpg", "filteren/modernwarfare")
 
-style
+block styles
   include KiesSpel.css

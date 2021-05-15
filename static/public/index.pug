@@ -4,16 +4,25 @@ html(lang='en')
     title= title
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
   body
+    div.bodyDiv
     include components/Header/Header.pug
 
-    if route === 'Pages/Berichten/Berichten.pug'
-      include Pages/Berichten/Berichten.pug
-    else if route === 'Pages/Zoeken/Zoeken.pug'
-      include Pages/Zoeken/Zoeken.pug
-    else 
-      include Pages/Filter/Filter.pug
+    block content
+    //- if route === 'Pages/Berichten/Berichten.pug'
+    //-   include Pages/Berichten/Berichten.pug
+    //- else if route === 'Pages/Zoeken/Zoeken.pug'
+    //-   include Pages/Zoeken/Zoeken.pug
+    //- else 
+    //-   include Pages/Profiel/Profiel.pug
+    
 
-    include components/footer/footer.pug
-
+    include components/Footer/Footer.pug
+      
   style 
     include Index.css
+    include components/Header/Header.css
+    include components/footer/footer.css
+    block styles
+  
+  script 
+    block scripts

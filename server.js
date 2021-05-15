@@ -26,71 +26,68 @@ const storage = multer.diskStorage({
 let upload = multer({ storage: storage });
 
 app.get("/", (req, res) => {
-  res.render("Index", { route: "Pages/Zoeken/Zoeken.pug", title: "Zoeken" });
+  res.render("Pages/Zoeken/Zoeken.pug", { title: "Zoeken" });
 });
 
-app.get("/filteren", (req, res) => {
-  res.render("Index", {
-    route: "Pages/Filter/Filter.pug",
-    title: "Filteren",
-    filterStap: "KiesSpel",
+app.get("/profiel", (req, res) => {
+  res.render("Pages/Profiel/Profiel.pug", {
+    title: "Profiel",
   });
 });
 
-app.get("/filteren/rocketleague", (req, res) => {
-  res.render("Index", {
-    route: "Pages/Filter/Filter.pug",
-    title: "Filteren",
+app.get("/profiel/filteren", (req, res) => {
+  res.render("Pages/Profiel/KiesSpel/KiesSpel.pug", {
+    title: "Profiel",
+  });
+});
+
+app.get("/profiel/filteren/rocketleague", (req, res) => {
+  res.render("Pages/Profiel/Filteren/Filteren", {
+    title: "Profiel",
     filterStap: "Rocket League",
   });
 });
-app.get("/filteren/schaken", (req, res) => {
-  res.render("Index", {
-    route: "Pages/Filter/Filter.pug",
-    title: "Filteren",
+app.get("/profiel/filteren/schaken", (req, res) => {
+  res.render("Pages/Profiel/Filteren/Filteren", {
+    title: "Profiel",
     filterStap: "Schaken",
   });
 });
-app.get("/filteren/apexlegends", (req, res) => {
-  res.render("Index", {
-    route: "Pages/Filter/Filter.pug",
-    title: "Filteren",
+app.get("/profiel/filteren/apexlegends", (req, res) => {
+  res.render("Pages/Profiel/Filteren/Filteren", {
+    title: "Profiel",
     filterStap: "Apex Legends",
   });
 });
-app.get("/filteren/modernwarfare", (req, res) => {
-  res.render("Index", {
-    route: "Pages/Filter/Filter.pug",
-    title: "Filteren",
+app.get("/profiel/filteren/modernwarfare", (req, res) => {
+  res.render("Pages/Profiel/Filteren/Filteren", {
+    title: "Profiel",
     filterStap: "Modern Warfare",
   });
 });
 
-app.post("/Filter", upload.single("rankProof"), function (req, res, next) {
-  res.render("Index", {
-    route: "Pages/Filter/Filter.pug",
-    title: "Filteren",
+app.post("/profiel", upload.none(), function (req, res, next) {
+  res.render("Pages/Profiel/Filteren/Filteren.pug", {
+    title: "Profiel",
     FilterInfo: req.body,
-    rankProof: req.file,
   });
 });
 
 app.get("/zoeken", (req, res) => {
-  res.render("Index", { route: "Pages/Zoeken/Zoeken.pug", title: "Zoeken" });
+  res.render("Pages/Zoeken/Zoeken.pug", { title: "Zoeken" });
 });
 
-app.post("/zoeken", upload.single("rankProof"), function (req, res, next) {
-  res.render("Index", {
-    route: "Pages/Zoeken/Zoeken.pug",
+app.post("/zoeken", upload.none(), function (req, res, next) {
+  console.log('hey');
+  console.log(req.body);
+  res.render("Pages/Zoeken/Zoeken.pug", {
     title: "Zoeken",
     filterInfo: req.body,
-    rankProof: req.file,
   });
 });
 
 app.get("/Berichten", (req, res) => {
-  res.render("Index", {
-    route: "Pages/Berichten/Berichten.pug",
+  res.render("Pages/Berichten/Berichten.pug", {
     title: "Berichten",
   });
 });
