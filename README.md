@@ -1,5 +1,5 @@
 ## Demo link
-(https://secure-everglades-43854.herokuapp.com/)[https://secure-everglades-43854.herokuapp.com/]
+https://secure-everglades-43854.herokuapp.com/
 
 
 ## Description/Concept
