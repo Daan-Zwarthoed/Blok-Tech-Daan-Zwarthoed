@@ -31,6 +31,10 @@ app.get("/", (req, res) => {
   res.render("pages/zoeken/zoeken", { title: "Zoeken" });
 });
 
+app.get("/test", (req, res) => {
+  res.render("test");
+});
+
 app.get("/profiel", (req, res) => {
   res.render("pages/profiel/profiel", {
     title: "Profiel",
