@@ -27,6 +27,10 @@ const storage = multer.diskStorage({
 });
 let upload = multer({ storage: storage });
 
+app.get("/test", (req, res) => {
+  res.render("test.pug");
+});
+
 app.get("/", (req, res) => {
   res.render("Pages/Zoeken/Zoeken", { title: "Zoeken" });
 });
