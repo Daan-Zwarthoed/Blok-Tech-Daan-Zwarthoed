@@ -1,6 +1,6 @@
 extends /index.pug
 block content
-  - var users = [{name: "daanzh", game: "Rocket League", rankedOfCasual: "Ranked", mode: "1v1", rank:250}, {name: "stormvv", game: "Rocket League", rankedOfCasual: ["Casual", "Ranked"], mode: ["1v1", "2v2", "3v3"], rank: 350}, {name: "creeper", game: "Rocket League", rankedOfCasual: "Casual", mode: ["1v1", "3v3"]}, {name: "jorisdtv", game: "Modern Warfare", rankedOfCasual: ["Casual", "Ranked"]}, {name: "tvdh18", game: "Modern Warfare", rankedOfCasual: "Casual", mode: ["Battle Royale", "Standard"]}, {name: "noalooks", game: "Chess"}, {name: "lenq123", game: "Chess", rankedOfCasual: ["Casual", "Ranked"], mode: "1min", rank: 1000}]
+  - var users = [{name: "daltoosh", game: "Apex Legends", rankedOfCasual: "Ranked", mode: "Arena", rank:600}, {name: "daanzh", game: "Rocket League", rankedOfCasual: "Ranked", mode: "1v1", rank:250}, {name: "stormvv", game: "Rocket League", rankedOfCasual: ["Casual", "Ranked"], mode: ["1v1", "2v2", "3v3"], rank: 350}, {name: "creeper", game: "Rocket League", rankedOfCasual: "Casual", mode: ["1v1", "3v3"]}, {name: "jorisdtv", game: "Modern Warfare", rankedOfCasual: ["Casual", "Ranked"]}, {name: "tvdh18", game: "Modern Warfare", rankedOfCasual: "Casual", mode: ["Battle Royale", "Standard"]}, {name: "noalooks", game: "Chess"}, {name: "lenq123", game: "Chess", rankedOfCasual: ["Casual", "Ranked"], mode: "1min", rank: 1000}]
 
   - var filter = filterInfo
 
@@ -83,7 +83,7 @@ block content
           div.paddingDiv 
             h5 Rank
             if filteredUser.rankedOfCasual
-              if filteredUser.rankedOfCasual === "ranked" || filteredUser.rankedOfCasual[1] === "ranked"
+              if filteredUser.rankedOfCasual === "Ranked" || filteredUser.rankedOfCasual[1] === "Ranked"
                 if filteredUser.rank
                   p= filteredUser.rank
                 else 
