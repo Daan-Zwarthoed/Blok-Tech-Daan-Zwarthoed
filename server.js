@@ -15,6 +15,8 @@ app.use(express.urlencoded());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.locals.basedir = 'static/public';
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "static/public/uploads/");
