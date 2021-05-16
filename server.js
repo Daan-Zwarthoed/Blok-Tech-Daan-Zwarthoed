@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/profiel", (req, res) => {
-  res.render("pages/profiel/profiel.pug", {
+  res.render("pages/profiel/profiel", {
     title: "Profiel",
   });
 });
