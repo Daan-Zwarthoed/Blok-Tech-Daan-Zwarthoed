@@ -5,10 +5,10 @@ const multer = require("multer");
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 8080;
 
-app.set("views", "static/public");
+app.set("views", "static/public/");
 app.set("view engine", "pug");
 
-app.use(express.static("static/public"));
+app.use(express.static("static/public/"));
 app.use(express.json());
 app.use(express.urlencoded());
 
