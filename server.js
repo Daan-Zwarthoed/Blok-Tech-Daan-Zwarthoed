@@ -32,11 +32,11 @@ app.get("/", (req, res) => {
 });
 
 app.get("/test", (req, res) => {
-  res.render("test");
+  res.render("pages/profiel/test");
 });
 
 app.get("/profiel", (req, res) => {
-  res.render("pages/profiel/profiel", {title: "Profiel"});
+  res.render("pages/profiel/profiel", { title: "Profiel" });
 });
 
 app.get("/profiel/filteren", (req, res) => {
