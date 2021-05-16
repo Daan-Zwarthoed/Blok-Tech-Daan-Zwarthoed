@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/test", (req, res) => {
-  res.render("pages/profiel/test");
+  res.render("pages/zoeken/test");
 });
 
 app.get("/profiel", (req, res) => {
