@@ -35,6 +35,10 @@ app.get("/test2", (req, res) => {
   res.render("test2.pug");
 });
 
+app.get("/test3", (req, res) => {
+  res.render("test/test3.pug");
+});
+
 app.get("/", (req, res) => {
   res.render("Pages/Zoeken/Zoeken", { title: "Zoeken" });
 });
