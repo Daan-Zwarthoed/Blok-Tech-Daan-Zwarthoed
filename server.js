@@ -28,17 +28,17 @@ const storage = multer.diskStorage({
 let upload = multer({ storage: storage });
 
 app.get("/", (req, res) => {
-  res.render("Pages/Zoeken/Zoeken.pug", { title: "Zoeken" });
+  res.render("Pages/Zoeken/Zoeken", { title: "Zoeken" });
 });
 
 app.get("/profiel", (req, res) => {
-  res.render("Pages/Profiel/Profiel.pug", {
+  res.render("Pages/Profiel/Profiel", {
     title: "Profiel",
   });
 });
 
 app.get("/profiel/filteren", (req, res) => {
-  res.render("Pages/Profiel/KiesSpel/KiesSpel.pug", {
+  res.render("Pages/Profiel/KiesSpel/KiesSpel", {
     title: "Profiel",
   });
 });
@@ -69,27 +69,27 @@ app.get("/profiel/filteren/modernwarfare", (req, res) => {
 });
 
 app.post("/profiel", upload.none(), function (req, res, next) {
-  res.render("Pages/Profiel/Filteren/Filteren.pug", {
+  res.render("Pages/Profiel/Filteren/Filteren", {
     title: "Profiel",
     FilterInfo: req.body,
   });
 });
 
 app.get("/zoeken", (req, res) => {
-  res.render("Pages/Zoeken/Zoeken.pug", { title: "Zoeken" });
+  res.render("Pages/Zoeken/Zoeken", { title: "Zoeken" });
 });
 
 app.post("/zoeken", upload.none(), function (req, res, next) {
   console.log('hey');
   console.log(req.body);
-  res.render("Pages/Zoeken/Zoeken.pug", {
+  res.render("Pages/Zoeken/Zoeken", {
     title: "Zoeken",
     filterInfo: req.body,
   });
 });
 
 app.get("/Berichten", (req, res) => {
-  res.render("Pages/Berichten/Berichten.pug", {
+  res.render("Pages/Berichten/Berichten", {
     title: "Berichten",
   });
 });
