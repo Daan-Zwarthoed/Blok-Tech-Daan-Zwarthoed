@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/test", (req, res) => {
-  res.render("pages/zoeken/test");
+  res.render("pages/zoeken/test.pug");
 });
 
 app.get("/profiel", (req, res) => {
