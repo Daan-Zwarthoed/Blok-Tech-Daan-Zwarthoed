@@ -2,11 +2,11 @@ extends /index.pug
 block content
   - var profielInfo = profielInfoVanDeBackendInProgress
   if !profielInfo
-    div.nogGeenFilters
+    .nogGeenFilters
       p Je hebt nog geen filters ingesteld. Klik op de knop hieronder om daar aan te beginnen
       a(href="/profiel/filteren").defaultButton start met filteren
   else
-    div.profiel
+    .profiel
       a(href="/profiel").defaultButton Filters aanpassen
 
       h3 Jouw game

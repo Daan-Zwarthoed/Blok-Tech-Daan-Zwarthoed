@@ -47,13 +47,13 @@ block content
       - rankMatched = false
   else 
     - filteredUsers = users
-      div.nogGeenFilters
+      .nogGeenFilters
         p Je hebt nog geen filters ingesteld. Klik op de knop hieronder om daar aan te beginnen
         a(href="/profiel/filteren").defaultButton start met filteren
 
 
   if filteredUsers.length !== 0
-    div.users
+    .users
       each filteredUser in filteredUsers
         div.user
           h3= filteredUser.name
@@ -87,7 +87,7 @@ block content
           div.linkDiv
             a(href="https://www.youtube.com/watch?v=dQw4w9WgXcQ").defaultButton bericht
   else
-    div.nogGeenFilters
+    .nogGeenFilters
       p Er zijn helaas geen resultaten voor deze filters. Klik op de knop om het opnieuw te proberen
       a(href="/profiel/filteren").defaultButton Opnieuw filteren
 
