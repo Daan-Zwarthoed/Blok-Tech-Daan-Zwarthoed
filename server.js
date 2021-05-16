@@ -36,7 +36,7 @@ app.get("/test2", (req, res) => {
 });
 
 app.get("/test3", (req, res) => {
-  res.render("Test/test3.pug");
+  res.render("test/test3.pug");
 });
 
 app.get("/", (req, res) => {
