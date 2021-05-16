@@ -36,9 +36,7 @@ app.get("/test", (req, res) => {
 });
 
 app.get("/profiel", (req, res) => {
-  res.render("pages/profiel/profiel", {
-    title: "Profiel",
-  });
+  res.render("pages/profiel/profiel", {title: "Profiel"});
 });
 
 app.get("/profiel/filteren", (req, res) => {
