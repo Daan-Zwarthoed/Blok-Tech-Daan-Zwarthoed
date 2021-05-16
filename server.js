@@ -27,81 +27,67 @@ const storage = multer.diskStorage({
 });
 let upload = multer({ storage: storage });
 
-app.get("/test", (req, res) => {
-  res.render("./Pages/Zoeken/test.pug");
-});
-
-app.get("/test2", (req, res) => {
-  res.render("test2.pug");
-});
-
-app.get("/test3", (req, res) => {
-  res.render("test/test3.pug");
-});
-
 app.get("/", (req, res) => {
-  res.render("Pages/Zoeken/Zoeken", { title: "Zoeken" });
+  res.render("pages/zoeken/zoeken", { title: "Zoeken" });
 });
 
 app.get("/profiel", (req, res) => {
-  res.render("Pages/Profiel/Profiel", {
+  res.render("pages/profiel/profiel", {
     title: "Profiel",
   });
 });
 
 app.get("/profiel/filteren", (req, res) => {
-  res.render("Pages/Profiel/KiesSpel/KiesSpel", {
+  res.render("pages/profiel/kiesSpel/kiesSpel", {
     title: "Profiel",
   });
 });
 
 app.get("/profiel/filteren/rocketleague", (req, res) => {
-  res.render("Pages/Profiel/Filteren/Filteren", {
+  res.render("pages/profiel/filteren/filteren", {
     title: "Profiel",
     filterStap: "Rocket League",
   });
 });
 app.get("/profiel/filteren/schaken", (req, res) => {
-  res.render("Pages/Profiel/Filteren/Filteren", {
+  res.render("pages/profiel/filteren/filteren", {
     title: "Profiel",
     filterStap: "Schaken",
   });
 });
 app.get("/profiel/filteren/apexlegends", (req, res) => {
-  res.render("Pages/Profiel/Filteren/Filteren", {
+  res.render("pages/profiel/filteren/filteren", {
     title: "Profiel",
     filterStap: "Apex Legends",
   });
 });
 app.get("/profiel/filteren/modernwarfare", (req, res) => {
-  res.render("Pages/Profiel/Filteren/Filteren", {
+  res.render("pages/profiel/filteren/filteren", {
     title: "Profiel",
     filterStap: "Modern Warfare",
   });
 });
 
 app.post("/profiel", upload.none(), function (req, res, next) {
-  res.render("Pages/Profiel/Filteren/Filteren", {
+  res.render("pages/profiel/filteren/filteren", {
     title: "Profiel",
     FilterInfo: req.body,
   });
 });
 
 app.get("/zoeken", (req, res) => {
-  res.render("Pages/Zoeken/Zoeken", { title: "Zoeken" });
+  res.render("pages/zoeken/zoeken", { title: "Zoeken" });
 });
 
 app.post("/zoeken", upload.none(), function (req, res, next) {
-  console.log("hey");
-  console.log(req.body);
-  res.render("Pages/Zoeken/Zoeken", {
+  res.render("pages/zoeken/zoeken", {
     title: "Zoeken",
     filterInfo: req.body,
   });
 });
 
 app.get("/Berichten", (req, res) => {
-  res.render("Pages/Berichten/Berichten", {
+  res.render("pages/berichten/berichten", {
     title: "Berichten",
   });
 });
