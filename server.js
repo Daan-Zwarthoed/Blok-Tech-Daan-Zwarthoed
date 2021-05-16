@@ -5,7 +5,7 @@ const multer = require("multer");
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 8080;
 
-app.set("views", "static/public");
+app.set("views", path.join(__dirname, "static/public"));
 app.set("view engine", "pug");
 
 app.use(express.static("static/public"));
@@ -15,7 +15,7 @@ app.use(express.urlencoded());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.locals.basedir = 'static/public';
+app.locals.basedir = "static/public";
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -80,7 +80,7 @@ app.get("/zoeken", (req, res) => {
 });
 
 app.post("/zoeken", upload.none(), function (req, res, next) {
-  console.log('hey');
+  console.log("hey");
   console.log(req.body);
   res.render("Pages/Zoeken/Zoeken", {
     title: "Zoeken",
