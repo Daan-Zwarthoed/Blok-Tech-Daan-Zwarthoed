@@ -1,6 +1,6 @@
 extends /index.pug
 block content
-  - var users = [{name: "daanzh", game: "Rocket League", rankedOfCasual: "ranked", mode: "1v1", rank:250}, {name: "stormvv", game: "Rocket League", rankedOfCasual: ["casual", "ranked"], mode: ["1v1", "2v2", "3v3"], rank: 350}, {name: "tvdh18", game: "Modern Warfare", rankedOfCasual: "casual", mode: ["Battle Royale", "Standard"]}, {name: "lenq123", game: "Chess", rankedOfCasual: ["casual", "ranked"], mode: "1min", rank: 1000}]
+  - var users = [{name: "daanzh", game: "Rocket League", rankedOfCasual: "Ranked", mode: "1v1", rank:250}, {name: "stormvv", game: "Rocket League", rankedOfCasual: ["Casual", "Ranked"], mode: ["1v1", "2v2", "3v3"], rank: 350}, {name: "creeper", game: "Rocket League", rankedOfCasual: "Casual", mode: ["1v1", "3v3"]}, {name: "jorisdtv", game: "Modern Warfare", rankedOfCasual: ["Casual", "Ranked"]}, {name: "tvdh18", game: "Modern Warfare", rankedOfCasual: "Casual", mode: ["Battle Royale", "Standard"]}, {name: "noalooks", game: "Chess"}, {name: "lenq123", game: "Chess", rankedOfCasual: ["Casual", "Ranked"], mode: "1min", rank: 1000}]
 
   - var filter = filterInfo
 
@@ -15,7 +15,7 @@ block content
   - var index = 0
   if filter
     each user in users
-      if !filter.rankedOfCasual
+      if !filter.rankedOfCasual || !user.rankedOfCasual
         - rankedOfCasualMatched = true
       else if Array.isArray(filter.rankedOfCasual)
         each rankedOfCasualFilter in filter.rankedOfCasual
@@ -23,14 +23,15 @@ block content
             - rankedOfCasualMatched = true
       else 
         if user.rankedOfCasual.includes(filter.rankedOfCasual)
-        - rankedOfCasualMatched = true
+          - rankedOfCasualMatched = true
+
 
       if !filter.rank || !user.rank
         - rankMatched = true
       else if user.rank + 100 > +filter.rank && user.rank - 100 < +filter.rank
         - rankMatched = true
 
-      if !filter.mode
+      if !filter.mode || !user.mode
         - modeMatched = true
       else if Array.isArray(filter.mode)
         each modeFilter in filter.mode
@@ -61,29 +62,36 @@ block content
           h4= filteredUser.game
           div.paddingDiv
             h5 Rank voorkeur
-            if Array.isArray(filteredUser.rankedOfCasual)
-              each rankedOfCasualFilter in filteredUser.rankedOfCasual
-                p= rankedOfCasualFilter
+            if Array.isArray(filteredUser.rankedOfCasual) || !filteredUser.rankedOfCasual
+              p Ranked
+              p Casual
             else if filteredUser.rankedOfCasual
               p= filteredUser.rankedOfCasual
-            else
-              p Geen voorkeur
+
           div.paddingDiv
             h5 Mode
-            if Array.isArray(filteredUser.mode)
-              each modeFilter in filteredUser.mode
-                p= modeFilter
+            if Array.isArray(filteredUser.mode) || !filteredUser.mode
+              if !filteredUser.mode || (filteredUser.game === "Apex Legends") || (filteredUser.game === "Modern Warfare") || (filteredUser.game === "Rocket League" && filteredUser.mode.length === 3) || (filteredUser.game === "Chess" && filteredUser.mode.length === 4)
+                p Geen voorkeur
+              else
+                each modeFilter in filteredUser.mode
+                  p= modeFilter
             else if filteredUser.mode
               p= filteredUser.mode
-            else
-              p Geen voorkeur
+
+
           div.paddingDiv 
-            if filteredUser.rankedOfCasual === "ranked" || filteredUser.rankedOfCasual[1] === "ranked"
-              h5 Rank
-              if filteredUser.rank
-                p= filteredUser.rank
+            h5 Rank
+            if filteredUser.rankedOfCasual
+              if filteredUser.rankedOfCasual === "ranked" || filteredUser.rankedOfCasual[1] === "ranked"
+                if filteredUser.rank
+                  p= filteredUser.rank
+                else 
+                  p ?
               else 
-                p ?
+                p N/A
+            else 
+              p ?
           div.linkDiv
             a(href="https://www.youtube.com/watch?v=dQw4w9WgXcQ").defaultButton bericht
   else
