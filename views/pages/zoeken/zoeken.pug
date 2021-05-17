@@ -33,7 +33,6 @@ block content
         p Je hebt nog geen filters ingesteld. Klik op de knop hieronder om daar aan te beginnen
         a(href="/profiel/filteren").defaultButton start met filteren
 
-
   if filteredUsers.length !== 0
     .users
       each filteredUser in filteredUsers
@@ -52,7 +51,7 @@ block content
           div.paddingDiv
             h5 Mode
             if Array.isArray(filteredUser.mode) || !filteredUser.mode
-              if !filteredUser.mode || (filteredUser.game === "Apex Legends") || (filteredUser.game === "Modern Warfare") || (filteredUser.game === "Rocket League" && filteredUser.mode.length === 3) || (filteredUser.game === "Chess" && filteredUser.mode.length === 4)
+              if !filteredUser.mode || filteredUser.game === "Apex Legends" || filteredUser.game === "Modern Warfare" || filteredUser.game === "Rocket League" && filteredUser.mode.length === 3 || filteredUser.game === "Chess" && filteredUser.mode.length === 4
                 p Geen voorkeur
               else
                 each modeFilter in filteredUser.mode
@@ -63,19 +62,13 @@ block content
 
           div.paddingDiv 
             h5 Rank
-            if filteredUser.rankedOfCasual
-              if filteredUser.rankedOfCasual === "Ranked" || filteredUser.rankedOfCasual[1] === "Ranked"
-                if filteredUser.rank
-                  p= filteredUser.rank
-                else 
-                  p ?
-              else 
-                p N/A
-            else 
+            if !filteredUser.rankedOfCasual || filteredUser.rankedOfCasual === "Ranked" || filteredUser.rankedOfCasual[1] === "Ranked"
               if filteredUser.rank
                 p= filteredUser.rank
               else 
                 p ?
+            else 
+              p N/A
           div.linkDiv
             a(href="https://www.youtube.com/watch?v=dQw4w9WgXcQ").defaultButton bericht
   else
