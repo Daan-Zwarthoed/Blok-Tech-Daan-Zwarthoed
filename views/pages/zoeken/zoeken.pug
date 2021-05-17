@@ -4,48 +4,27 @@ block content
 
   - let filter = filterInfo
 
-  - let rankedOfCasualMatched = false
-
-  - let rankMatched = false
-
-  - let modeMatched = false
-
   - let filteredUsers = []
 
-  - let index = 0
   if filter
-    each user in users
-      if !filter.rankedOfCasual || !user.rankedOfCasual
-        - rankedOfCasualMatched = true
-      else if Array.isArray(filter.rankedOfCasual)
-        each rankedOfCasualFilter in filter.rankedOfCasual
-          if user.rankedOfCasual.includes(rankedOfCasualFilter)
-            - rankedOfCasualMatched = true
-      else 
-        if user.rankedOfCasual.includes(filter.rankedOfCasual)
-          - rankedOfCasualMatched = true
+    - filteredUsers = users.filter(user => user.game === filter.game)
+      if filter.rankedOfCasual && !Array.isArray(filter.rankedOfCasual)
+        - filteredUsers = filteredUsers.filter(user => user.rankedOfCasual.includes(filter.rankedOfCasual) || !user.rankedOfCasual)
 
+      if filter.rank
+        - filteredUsers = filteredUsers.filter(user => user.rank + 100 > +filter.rank && user.rank - 100 < +filter.rank || !user.rank)
 
-      if !filter.rank || !user.rank
-        - rankMatched = true
-      else if user.rank + 100 > +filter.rank && user.rank - 100 < +filter.rank
-        - rankMatched = true
-
-      if !filter.mode || !user.mode
-        - modeMatched = true
-      else if Array.isArray(filter.mode)
-        each modeFilter in filter.mode
-          if user.mode.includes(modeFilter)
-            - modeMatched = true
-      else 
-        if user.mode.includes(filter.mode)
-          - modeMatched = true
-
-      if user.game === filter.game && rankedOfCasualMatched && modeMatched && rankMatched
-        - filteredUsers.push(user)
-      - rankedOfCasualMatched = false
-      - modeMatched = false
-      - rankMatched = false
+      if filter.mode
+        if Array.isArray(filter.mode)
+          each filteredUser in filteredUsers
+            each modeFilter in filter.mode
+              if filteredUser.mode.includes(modeFilter)
+                - modeMatched = true 
+            if !modeMatched
+              - filteredUsers = filteredUsers.filter(user => user !== filteredUser)
+            - modeMatched = false
+        else
+          - filteredUsers = filteredUsers.filter(user => user.mode.includes(filter.mode) || !user.mode)
   else 
     - filteredUsers = users
       .nogGeenFilters
@@ -65,7 +44,7 @@ block content
             if Array.isArray(filteredUser.rankedOfCasual) || !filteredUser.rankedOfCasual
               p Ranked
               p Casual
-            else if filteredUser.rankedOfCasual
+            else
               p= filteredUser.rankedOfCasual
 
           div.paddingDiv
@@ -76,7 +55,7 @@ block content
               else
                 each modeFilter in filteredUser.mode
                   p= modeFilter
-            else if filteredUser.mode
+            else
               p= filteredUser.mode
 
 
