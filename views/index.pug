@@ -3,14 +3,14 @@ html(lang='nl')
   head
     title= title
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+  style 
+    include ../static/public/index.css
+  script 
+    include ../static/public/index.js
   body
     .bodyDiv
     include components/header/header.pug
     block content
     include components/footer/footer.pug
-      
-  style 
-    include ../static/public/index.css
-  
-  script 
-    include ../static/public/index.js
+
+
