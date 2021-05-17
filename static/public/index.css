@@ -140,6 +140,11 @@ body {
   width: 90vw;
 }
 
+@media screen and (max-width: 800px) {
+  .KiesSpel div {
+    max-width: 44vw !important;
+  }
+}
 .filteren {
   margin-left: 20px;
 }

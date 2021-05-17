@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "startOpen": "node serverStart.js && nodemon server.js",
-    "startSass": "sass --no-source-map --watch static/public"
+    "startSass": "sass --no-source-map --watch views/index.scss:static/public/index.css"
   },
   "author": "",
   "license": "ISC",

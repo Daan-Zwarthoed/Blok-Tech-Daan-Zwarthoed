@@ -1,0 +1,54 @@
+* {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin: 0;
+  font-size: 1.2em;
+}
+
+html {
+  height: 100vh;
+}
+
+body {
+  margin-bottom: 6em;
+  margin-top: 6em;
+  background-color: #f78080;
+}
+
+.bodyDiv {
+  top: 0;
+  left: 0;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+  background-color: #f8f7ff;
+}
+
+.defaultButton {
+  padding: 10px;
+  background-color: lightblue;
+  text-decoration: none;
+  color: black;
+  box-shadow: 5px 5px 5px;
+  width: fit-content;
+  height: fit-content;
+}
+
+.nogGeenFilters {
+  padding-top: 1em;
+  padding-left: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p {
+    font-size: 1.2em;
+  }
+}
+
+@import "components/footer/footer";
+@import "components/header/header";
+@import "pages/profiel/profiel";
+@import "pages/profiel/kiesSpel/kiesSpel";
+@import "pages/profiel/filteren/filteren";
+@import "pages/zoeken/zoeken";
+  
