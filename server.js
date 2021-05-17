@@ -5,17 +5,17 @@ const multer = require("multer");
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 8080;
 
-app.set("views", path.join(__dirname, "static/public"));
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
-app.use(express.static(path.join(__dirname, "static/public")));
+app.use(express.static(path.join(__dirname, "views")));
 app.use(express.json());
 app.use(express.urlencoded());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.locals.basedir = "static/public";
+app.locals.basedir = path.join(__dirname, "views");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {

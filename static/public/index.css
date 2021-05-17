@@ -44,3 +44,193 @@ body {
 .nogGeenFilters p {
   font-size: 1.2em;
 }
+
+.footer {
+  width: 100vw;
+  height: 3em !important;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.footer ul {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  padding: 0;
+  justify-content: space-between;
+}
+.footer ul li {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: #f78080;
+  border: solid black 1px;
+}
+.footer ul li a {
+  color: black;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.footer i {
+  font-size: 1.2em;
+  margin-right: 0.3em;
+}
+.footer .Profiel .Profiel,
+.footer .Zoeken .Zoeken,
+.footer .Berichten .Berichten {
+  background-color: #FFD8BE;
+}
+
+.header {
+  width: 100%;
+  height: 100% !important;
+  max-height: 2em !important;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, #f78080 31%, #f78080 100%);
+  padding: 1em;
+  font-size: 1.5em;
+}
+
+.profiel {
+  margin-left: 20px;
+}
+.profiel p {
+  margin-left: 20px;
+}
+.profiel img {
+  max-width: 30vw;
+}
+.profiel h3:first-of-type {
+  margin-top: 1em;
+}
+
+.KiesSpel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding-bottom: 5em;
+}
+.KiesSpel div {
+  position: relative;
+  overflow: hidden;
+  margin: 0.2em;
+}
+.KiesSpel h3 {
+  color: white;
+  text-shadow: -4px 0 black, 0 4px black, 4px 0 black, 0 -4px black;
+  position: absolute;
+  font-size: 1.8em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  text-align: center;
+}
+.KiesSpel img {
+  width: 90vw;
+}
+
+.filteren {
+  margin-left: 20px;
+}
+.filteren form * {
+  display: flex;
+}
+.filteren form > label {
+  margin-top: 1em;
+}
+.filteren h1 {
+  font-size: 1.8em;
+}
+.filteren button {
+  margin-top: 1em;
+}
+.filteren .choiceDiv {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.filteren .choiceDiv input {
+  margin-right: 0.2em;
+}
+.filteren .proof-rank {
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  font-size: 0.5em;
+  margin-left: 2em;
+  font-size: 0.7em;
+}
+.filteren .proof-rank input {
+  width: 20vw;
+  margin-left: 1px;
+}
+.filteren input[type=radio]:checked ~ .show-proof-rank,
+.filteren input[type=checkbox]:checked ~ .show-proof-rank {
+  opacity: 1;
+  max-height: 100px;
+  overflow: visible;
+}
+.filteren .show-proof-rank {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.users {
+  width: 94vw;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 5em;
+}
+
+.user {
+  margin: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: solid 5px black;
+}
+.user h3 {
+  font-size: 1.6em;
+  margin-top: 0.5em;
+}
+.user h4 {
+  font-size: 1.3em;
+}
+.user h5 {
+  font-size: 1em;
+}
+.user h3,
+.user h4 {
+  width: 100%;
+  text-align: center;
+  align-self: center;
+}
+.user .paddingDiv {
+  margin-top: 0.5em;
+  width: 33.3%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user .linkDiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 3em;
+  margin-top: 0.5em;
+}

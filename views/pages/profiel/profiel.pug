@@ -1,6 +1,6 @@
 extends /index.pug
 block content
-  - let profielInfo = profielInfoVanDeBackendInProgress
+  //- - let profielInfo = profielInfoVanDeBackendInProgress
   if !profielInfo
     .nogGeenFilters
       p Je hebt nog geen filters ingesteld. Klik op de knop hieronder om daar aan te beginnen
@@ -40,9 +40,6 @@ block content
         p= profielInfo.mode
       else
         p Geen voorkeur
-  
-block styles
-  include profiel.css
 
 
 
