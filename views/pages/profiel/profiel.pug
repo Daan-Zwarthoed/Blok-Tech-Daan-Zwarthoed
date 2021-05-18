@@ -1,45 +1,44 @@
 extends /index.pug
 block content
-  //- - let profielInfo = profielInfoVanDeBackendInProgress
-  if !profielInfo
+  if filterInfo
+    - let filterInfo = filterINfo
+  //- Dit komt zodra ik een backend maak
+  if !filterInfo
     .nogGeenFilters
       p Je hebt nog geen filters ingesteld. Klik op de knop hieronder om daar aan te beginnen
       a(href="/profiel/filteren").defaultButton start met filteren
   else
-    .profiel
-      a(href="/profiel").defaultButton Filters aanpassen
-
-      h3 Jouw game
-      p= profielInfo.game
-
-      h3 Jouw username
-      p= profielInfo.name
-
-      h3 Ranked of casual
-      if Array.isArray(profielInfo.rankedOfCasual)
-        ul
-          each rankedOfCasual in profielInfo.rankedOfCasual
-            li= rankedOfCasual
-      else if profielInfo.rankedOfCasual
-        p= profielInfo.rankedOfCasual
+    div.profiel
+      a(href="/profiel/filteren").defaultButton Filters aanpassen
+      h2 Jouw filters
+      h4 Game
+      p= filterInfo.game
+      h5 Rank voorkeur
+      if Array.isArray(filterInfo.rankedOfCasual) || !filterInfo.rankedOfCasual
+        p Ranked
+        p Casual
       else
-        p Geen voorkeur
+        p= filterInfo.rankedOfCasual
 
-      h3 Rank/rating bewijs
-      if rankProof
-        img(src=`/uploads/${rankProof.filename}`)
+      h5 Mode
+      if Array.isArray(filterInfo.mode) || !filterInfo.mode
+        if !filterInfo.mode || filterInfo.game === "Apex Legends" || filterInfo.game === "Modern Warfare" || filterInfo.game === "Rocket League" && filterInfo.mode.length === 3 || filterInfo.game === "Chess" && filterInfo.mode.length === 4
+          p Geen voorkeur
+        else
+          each modeFilter in filterInfo.mode
+            p= modeFilter
+      else
+        p= filterInfo.mode
+
+      h5 Rank
+      if !filterInfo.rankedOfCasual || filterInfo.rankedOfCasual === "Ranked" || filterInfo.rankedOfCasual[1] === "Ranked"
+        if filterInfo.rank
+          p= filterInfo.rank
+        else 
+          p ?
       else 
-        p Geen bewijs van rank
+        p N/A
 
-      h3 Mode/modes
-      if Array.isArray(profielInfo.mode)
-        ul
-          each mode in profielInfo.mode
-            li= mode
-      else if profielInfo.mode
-        p= profielInfo.mode
-      else
-        p Geen voorkeur
 
 
 

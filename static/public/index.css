@@ -111,6 +111,7 @@ body {
 
 .profiel {
   margin-left: 20px;
+  padding-top: 1em;
 }
 .profiel p {
   margin-left: 20px;
@@ -118,7 +119,7 @@ body {
 .profiel img {
   max-width: 30vw;
 }
-.profiel h3:first-of-type {
+.profiel h2:first-of-type {
   margin-top: 1em;
 }
 

@@ -67,9 +67,9 @@ app.get("/profiel/filteren/modernwarfare", (req, res) => {
 });
 
 app.post("/profiel", upload.none(), function (req, res, next) {
-  res.render("pages/profiel/filteren/filteren", {
+  res.render("pages/profiel/profiel", {
     title: "Profiel",
-    FilterInfo: req.body,
+    filterInfo: req.body,
   });
 });
 
