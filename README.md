@@ -34,6 +34,9 @@ Site is hosted on heroku
 ## Contributors
 Daan Zwarthoed
 
+## Resources
+[Resources](https://github.com/Daan-Zwarthoed/Blok-Tech-Daan-Zwarthoed/wiki/resources)
+
 ## License
 MIT License
 Copyright (c) 2021 Daan-Zwarthoed
