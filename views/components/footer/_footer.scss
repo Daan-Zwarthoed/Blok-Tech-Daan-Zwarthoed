@@ -5,7 +5,7 @@
   bottom: 0;
   left: 0;
   right: 0;
- 
+
   ul {
     display: flex;
     flex-direction: row;
@@ -13,7 +13,7 @@
     padding: 0;
     justify-content: space-between;
   }
-  
+
   ul li {
     display: flex;
     height: 100%;
@@ -21,7 +21,7 @@
     background-color: #f78080;
     border: solid black 1px;
   }
-  
+
   ul li a {
     color: black;
     text-decoration: none;
@@ -31,16 +31,14 @@
     width: 100%;
   }
 
-  i{
+  i {
     font-size: 1.2em;
-    margin-right: .3em;
+    margin-right: 0.3em;
   }
 
   .Profiel .Profiel,
   .Zoeken .Zoeken,
-  .Berichten .Berichten{
-    background-color: #FFD8BE;
+  .Berichten .Berichten {
+    background-color: #ffd8be;
   }
 }
-
-

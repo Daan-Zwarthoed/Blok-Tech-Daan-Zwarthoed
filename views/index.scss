@@ -34,8 +34,8 @@ body {
   height: fit-content;
 }
 
-.defaultButton:active{
-  background-color: #FFD8BE !important;
+.defaultButton:active {
+  background-color: #ffd8be !important;
 }
 
 .nogGeenFilters {
@@ -48,7 +48,7 @@ body {
   }
 }
 
-.nogGeenFiltersScroll{
+.nogGeenFiltersScroll {
   position: fixed;
   bottom: 3em;
   background-color: #f8f7ff;
@@ -60,4 +60,3 @@ body {
 @import "pages/profiel/kiesSpel/kiesSpel";
 @import "pages/profiel/filteren/filteren";
 @import "pages/zoeken/zoeken";
-  

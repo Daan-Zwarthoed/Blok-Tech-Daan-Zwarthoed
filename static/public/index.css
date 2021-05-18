@@ -35,7 +35,7 @@ body {
 }
 
 .defaultButton:active {
-  background-color: #FFD8BE !important;
+  background-color: #ffd8be !important;
 }
 
 .nogGeenFilters {
@@ -91,7 +91,7 @@ body {
 .footer .Profiel .Profiel,
 .footer .Zoeken .Zoeken,
 .footer .Berichten .Berichten {
-  background-color: #FFD8BE;
+  background-color: #ffd8be;
 }
 
 .header {
