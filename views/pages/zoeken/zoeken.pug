@@ -18,9 +18,7 @@ block content
       if Array.isArray(filter.mode)
         each filteredUser in filteredUsers
           each modeFilter in filter.mode
-            if !filteredUser.mode
-              - modeMatched = true 
-            else if filteredUser.mode.includes(modeFilter)
+            if !filteredUser.mode || filteredUser.mode.includes(modeFilter)
               - modeMatched = true 
           if !modeMatched
             - filteredUsers = filteredUsers.filter(user => user !== filteredUser)
@@ -29,7 +27,7 @@ block content
         - filteredUsers = filteredUsers.filter(user => !user.mode || user.mode.includes(filter.mode))
   else 
     - filteredUsers = users
-      .nogGeenFilters
+      div.nogGeenFilters
         p Je hebt nog geen filters ingesteld. Klik op de knop hieronder om daar aan te beginnen
         a(href="/profiel/filteren").defaultButton start met filteren
 
