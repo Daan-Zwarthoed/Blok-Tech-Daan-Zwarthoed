@@ -6,19 +6,18 @@ https://secure-everglades-43854.herokuapp.com/
 Voor mijn project heb ik een matching app gemaakt voor gamers. Zij kunnen dan een game kiezen die zij leuk vinden en daar dan filteren op ranked of casual spelen en bepaalde modes in die game.
 
 ## Installing
-1. Clone de repository met: `git clone https://github.com/Daan-Zwarthoed/Blok-Tech-Daan-Zwarthoed.git`
-2. Wanneer je dat hebt gedaan gebruik `npm install` om de dependencies te installeren
-3. Dan `npm build` om een localhost te openen
-4. Daarna `npm startSass` om het scss naar css watcher te starten
-5. Nu heb je een localhost opgezet en ben je vrij om de code te editen naar jou voorkeur.
+1. Clone the repository with: `git clone https://github.com/Daan-Zwarthoed/Blok-Tech-Daan-Zwarthoed.git`
+2. When you have done that use `npm install` to install the dependencies
+3. Then use `npm build` to start and open a localhost
+4. Then use `npm startSass` to start the scss to css watcher
+5. Now you have set up a localhost and you are free to edit the code to your liking!
 
-## Technische informatie
-### Gebruikte api's
+## Technical information
+### Used API's
 * server
   * mongodb    
   * body-parser 
   * multer
-  * open
   * path
 * templating
   * pug
@@ -27,6 +26,7 @@ Voor mijn project heb ik een matching app gemaakt voor gamers. Zij kunnen dan ee
   * mongodb  
 * devDependencies
   * nodemon
+  * open
 
 ### Site host
 Site is hosted on heroku
