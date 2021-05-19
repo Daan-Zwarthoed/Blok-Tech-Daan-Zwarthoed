@@ -25,6 +25,7 @@ For this project I made a matching app for gamers. They can choose a game that t
 * backend
   * mongodb  
 * devDependencies
+  * eslint
   * nodemon
   * open
 
