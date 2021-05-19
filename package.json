@@ -21,6 +21,7 @@
     "sass": "^1.32.12"
   },
   "devDependencies": {
+    "eslint": "^7.26.0",
     "nodemon": "^2.0.7",
     "open": "^8.0.6"
   }
