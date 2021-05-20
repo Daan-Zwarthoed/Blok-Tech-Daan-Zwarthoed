@@ -8,13 +8,7 @@ var localStorage = require("local-storage");
 const MongoClient = require("mongodb").MongoClient;
 const port = process.env.PORT || 8080;
 
-const aws = require("aws-sdk");
-
-let env = new aws.S3({
-  databaseURL: process.env.DATABASE_URL,
-});
-
-const connectionString = env.config.databaseURL;
+const connectionString = process.env.DATABASE_URL;
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
