@@ -8,7 +8,7 @@ For this project I made a matching app for gamers. They can choose a game that t
 ## Installing
 1. Clone the repository with: `git clone https://github.com/Daan-Zwarthoed/Blok-Tech-Daan-Zwarthoed.git`
 2. When you have done that use `npm install` to install the dependencies
-3. Then use `npm build` to start and open a localhost
+3. Then use `heroku local` to start and open a localhost
 4. Then use `npm startSass` to start the scss to css watcher
 5. Now you have set up a localhost and you are free to edit the code to your liking!
 
