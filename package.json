@@ -14,7 +14,6 @@
   "author": "Daan Zwarthoed",
   "license": "MIT",
   "dependencies": {
-    "aws-sdk": "^2.910.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "local-storage": "^2.0.0",
