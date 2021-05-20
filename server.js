@@ -153,9 +153,10 @@ app.get("/zoeken", (req, res) => {
 });
 
 app.get("/Berichten", (req, res) => {
-  res.render("pages/berichten/berichten", {
-    title: "Berichten",
-  });
+  res.send(process.env.DATABASE_URL);
+  // res.render("pages/berichten/berichten", {
+  //   title: "Berichten",
+  // });
 });
 
 app.get("*", function (req, res) {
