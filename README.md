@@ -21,9 +21,10 @@ For this project I made a matching app for gamers. They can choose a game that t
 * templating
   * pug
   * sass
-* backend
+* backend/storage
   * mongodb  
   * local-storage
+  * multer
 * devDependencies
   * eslint
 
