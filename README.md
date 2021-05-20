@@ -15,19 +15,17 @@ For this project I made a matching app for gamers. They can choose a game that t
 ## Technical information
 ### Used API's
 * server
-  * mongodb    
+  * express  
   * body-parser 
-  * multer
   * path
 * templating
   * pug
   * sass
 * backend
   * mongodb  
+  * local-storage
 * devDependencies
   * eslint
-  * nodemon
-  * open
 
 ### Site host
 Site is hosted on heroku
