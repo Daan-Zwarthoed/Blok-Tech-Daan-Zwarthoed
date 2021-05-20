@@ -9,7 +9,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "build": "heroku local",
     "startSass": "sass --no-source-map --watch views/index.scss:static/public/index.css"
   },
   "author": "Daan Zwarthoed",
