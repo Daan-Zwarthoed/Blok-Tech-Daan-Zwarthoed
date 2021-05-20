@@ -6,7 +6,6 @@ const multer = require("multer");
 const bodyParser = require("body-parser");
 var localStorage = require("local-storage");
 const MongoClient = require("mongodb").MongoClient;
-const open = require("open");
 const port = process.env.PORT || 8080;
 
 const connectionString = `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@daan-zwarthoed-blok-tec.ei2ci.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
@@ -163,6 +162,5 @@ app.get("*", function (req, res) {
 });
 
 app.listen(port, () => {
-  open(`http://localhost:${port}`);
   console.log(`Example app listening at http://localhost:${port}`);
 });

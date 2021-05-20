@@ -25,6 +25,5 @@
   },
   "devDependencies": {
     "eslint": "^7.26.0",
-    "open": "^8.0.6"
   }
 }
