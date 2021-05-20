@@ -23,7 +23,7 @@ app.locals.basedir = path.join(__dirname, "views");
 
 let upload = multer();
 
-MongoClient.connect(connectionString, { useUnifiedTopology: true })
+MongoClient.connect(connectionString)
   .then((client) => {
     db = client.db("my-matching-app");
     filterCollection = db.collection("filters");
@@ -153,10 +153,9 @@ app.get("/zoeken", (req, res) => {
 });
 
 app.get("/Berichten", (req, res) => {
-  res.send(process.env.DATABASE_URL);
-  // res.render("pages/berichten/berichten", {
-  //   title: "Berichten",
-  // });
+  res.render("pages/berichten/berichten", {
+    title: "Berichten",
+  });
 });
 
 app.get("*", function (req, res) {
