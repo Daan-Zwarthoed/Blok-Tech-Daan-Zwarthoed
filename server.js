@@ -8,9 +8,7 @@ var localStorage = require("local-storage");
 const MongoClient = require("mongodb").MongoClient;
 const port = process.env.PORT || 8080;
 
-const connectionString =
-  process.env.DATABASE_URL ||
-  "mongodb+srv://ANYONE:rDjStnckO5W9gvlm@daan-zwarthoed-blok-tec.ei2ci.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const connectionString = process.env.DATABASE_URL;
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
