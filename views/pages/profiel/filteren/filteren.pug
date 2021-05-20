@@ -16,6 +16,9 @@ block content
 
       input(type="text" name="game" value=filterStap style="display:none" readonly)
 
+      label(name="name") Wat is jouw username?
+      input(type="text" name="name" value=name required)
+
       label(name="rankedOfCasual") Speel je ranked of casual?
       +checkbox("rankedOfCasual", "Casual", "Casual")
       +checkbox("rankedOfCasual", "Ranked", "Ranked")  

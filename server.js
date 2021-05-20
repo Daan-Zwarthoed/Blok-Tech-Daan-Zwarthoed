@@ -1,38 +1,94 @@
+/* eslint-disable no-undef */
 const express = require("express");
 const path = require("path");
 const app = express();
 const multer = require("multer");
 const bodyParser = require("body-parser");
+var localStorage = require("local-storage");
+const MongoClient = require("mongodb").MongoClient;
+const open = require("open");
 const port = process.env.PORT || 8080;
 
+const connectionString = `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@daan-zwarthoed-blok-tec.ei2ci.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
 app.use(express.static(path.join(__dirname, "views")));
 app.use(express.json());
-app.use(express.urlencoded());
-
+app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.locals.basedir = path.join(__dirname, "views");
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "static/public/uploads/");
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  },
+let upload = multer();
+
+MongoClient.connect(connectionString, { useUnifiedTopology: true })
+  .then((client) => {
+    db = client.db("my-matching-app");
+    filterCollection = db.collection("filters");
+    userCollection = db.collection("users");
+  })
+  .catch((error) => console.error(error));
+
+app.post("/zoeken", upload.none(), (req, res) => {
+  userCollection
+    .find()
+    .toArray()
+    .then((results) => {
+      backendUsers = results;
+    });
+
+  localStorage.set("name", req.body.name);
+
+  filterCollection
+    .findOne({ name: req.body.name })
+    .then(() => {
+      if (req.body.game) {
+        return filterCollection.findOneAndUpdate(
+          { name: req.body.name },
+          {
+            $set: {
+              name: req.body.name,
+              game: req.body.game,
+              rankedOfCasual: req.body.rankedOfCasual,
+              rank: req.body.rank,
+              mode: req.body.mode,
+            },
+          },
+          {
+            upsert: true,
+          }
+        );
+      }
+    })
+    .then(() => {
+      filterCollection
+        .findOne({ name: req.body.name })
+        .then((resultUpdated) => {
+          res.render("pages/zoeken/zoeken", {
+            title: "Zoeken",
+            filterInfo: resultUpdated,
+            backendUsers: backendUsers,
+          });
+        });
+    })
+    .catch((error) => console.error(error));
 });
-let upload = multer({ storage: storage });
 
 app.get("/", (req, res) => {
-  res.render("pages/zoeken/zoeken", { title: "Zoeken" });
+  res.render("pages/login/login", { title: "Login" });
 });
 
 app.get("/profiel", (req, res) => {
-  res.render("pages/profiel/profiel", { title: "Profiel" });
+  filterCollection
+    .findOne({ name: localStorage.get("name") })
+    .then((result) => {
+      res.render("pages/profiel/profiel", {
+        title: "Profiel",
+        filterInfo: result,
+      });
+    });
 });
 
 app.get("/profiel/filteren", (req, res) => {
@@ -45,28 +101,32 @@ app.get("/profiel/filteren/rocketleague", (req, res) => {
   res.render("pages/profiel/filteren/filteren", {
     title: "Profiel",
     filterStap: "Rocket League",
+    name: localStorage.get("name"),
   });
 });
 app.get("/profiel/filteren/schaken", (req, res) => {
   res.render("pages/profiel/filteren/filteren", {
     title: "Profiel",
     filterStap: "Schaken",
+    name: localStorage.get("name"),
   });
 });
 app.get("/profiel/filteren/apexlegends", (req, res) => {
   res.render("pages/profiel/filteren/filteren", {
     title: "Profiel",
     filterStap: "Apex Legends",
+    name: localStorage.get("name"),
   });
 });
 app.get("/profiel/filteren/modernwarfare", (req, res) => {
   res.render("pages/profiel/filteren/filteren", {
     title: "Profiel",
     filterStap: "Modern Warfare",
+    name: localStorage.get("name"),
   });
 });
 
-app.post("/profiel", upload.none(), function (req, res, next) {
+app.post("/profiel", upload.none(), function (req, res) {
   res.render("pages/profiel/profiel", {
     title: "Profiel",
     filterInfo: req.body,
@@ -74,14 +134,22 @@ app.post("/profiel", upload.none(), function (req, res, next) {
 });
 
 app.get("/zoeken", (req, res) => {
-  res.render("pages/zoeken/zoeken", { title: "Zoeken" });
-});
+  userCollection
+    .find()
+    .toArray()
+    .then((results) => {
+      backendUsers = results;
+    });
 
-app.post("/zoeken", upload.none(), function (req, res, next) {
-  res.render("pages/zoeken/zoeken", {
-    title: "Zoeken",
-    filterInfo: req.body,
-  });
+  filterCollection
+    .findOne({ name: localStorage.get("name") })
+    .then((result) => {
+      res.render("pages/zoeken/zoeken", {
+        title: "Zoeken",
+        filterInfo: result,
+        backendUsers: backendUsers,
+      });
+    });
 });
 
 app.get("/Berichten", (req, res) => {
@@ -95,5 +163,6 @@ app.get("*", function (req, res) {
 });
 
 app.listen(port, () => {
+  open(`http://localhost:${port}`);
   console.log(`Example app listening at http://localhost:${port}`);
 });

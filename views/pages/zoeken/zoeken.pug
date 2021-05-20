@@ -1,12 +1,12 @@
 extends /index.pug
 block content
-  - let users = [{name: "daltoosh", game: "Apex Legends", rankedOfCasual: "Ranked", mode: "Arena", rank:600}, {name: "snipedown", game: "Apex Legends", rankedOfCasual: "Ranked", mode: ["Arena", "Battle Royale"], rank:900}, {name: "daanzh", game: "Rocket League", rankedOfCasual: "Ranked", mode: "1v1", rank:250}, {name: "mikey", game: "Rocket League"}, {name: "stormvv", game: "Rocket League", rankedOfCasual: ["Casual", "Ranked"], mode: ["1v1", "2v2", "3v3"], rank: 350}, {name: "creeper", game: "Rocket League", rankedOfCasual: "Casual", mode: ["1v1", "3v3"]}, {name: "jorisdtv", game: "Modern Warfare", rankedOfCasual: ["Casual", "Ranked"]}, {name: "tvdh18", game: "Modern Warfare", rankedOfCasual: "Casual", mode: ["Battle Royale", "Standard"]}, {name: "noalooks", game: "Chess"}, {name: "lenq123", game: "Chess", rankedOfCasual: ["Casual", "Ranked"], mode: "1min", rank: 1000}, {name: "timotje", game: "Chess", rank: 700},]
+  - let users = backendUsers
 
   - let filter = filterInfo
 
   - let filteredUsers = []
 
-  if filter
+  if filter && filter.game
     - filteredUsers = users.filter(user => user.game === filter.game)
     if filter.rankedOfCasual && !Array.isArray(filter.rankedOfCasual)
       - filteredUsers = filteredUsers.filter(user => !user.rankedOfCasual || user.rankedOfCasual.includes(filter.rankedOfCasual))

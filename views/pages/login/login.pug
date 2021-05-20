@@ -1,0 +1,9 @@
+extends /index.pug
+block content
+  div.login
+    div.filteren
+      form(action="/zoeken" method="post" enctype="multipart/form-data")
+
+        label(name="name") Wat is jouw username?
+        input(type="text" name="name" required)
+        button.defaultButton submit
