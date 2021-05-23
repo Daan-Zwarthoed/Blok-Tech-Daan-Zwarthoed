@@ -4,7 +4,7 @@ const path = require("path");
 const app = express();
 const multer = require("multer");
 const bodyParser = require("body-parser");
-var localStorage = require("local-storage");
+const localStorage = require("local-storage");
 const MongoClient = require("mongodb").MongoClient;
 const port = process.env.PORT || 8080;
 
@@ -13,7 +13,7 @@ const connectionString = process.env.DATABASE_URL;
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
-app.use(express.static(path.join(__dirname, "views")));
+app.use(express.static(path.join(__dirname, "static/public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
