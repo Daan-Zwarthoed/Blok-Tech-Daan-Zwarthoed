@@ -2,7 +2,6 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const multer = require("multer");
 const bodyParser = require("body-parser");
 const localStorage = require("local-storage");
 const MongoClient = require("mongodb").MongoClient;
@@ -21,8 +20,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.locals.basedir = path.join(__dirname, "views");
 
-let upload = multer();
-
 MongoClient.connect(connectionString)
   .then((client) => {
     db = client.db("my-matching-app");
@@ -31,7 +28,7 @@ MongoClient.connect(connectionString)
   })
   .catch((error) => console.error(error));
 
-app.post("/zoeken", upload.none(), (req, res) => {
+app.post("/zoeken", async (req, res) => {
   userCollection
     .find()
     .toArray()
@@ -126,7 +123,7 @@ app.get("/profiel/filteren/modernwarfare", (req, res) => {
   });
 });
 
-app.post("/profiel", upload.none(), function (req, res) {
+app.post("/profiel", async (req, res) => {
   res.render("pages/profiel/profiel", {
     title: "Profiel",
     filterInfo: req.body,
