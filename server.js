@@ -5,7 +5,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const localStorage = require("local-storage");
 const MongoClient = require("mongodb").MongoClient;
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 
 const connectionString = process.env.DATABASE_URL;
 
